@@ -1,0 +1,19 @@
+{
+    "name": "interactivesolutions/rivile",
+    "description": "",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [],
+    "repositories": [],
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/framework": "5.3.*",
+        "ext-soap": "*",
+        "interactivesolutions/honeycomb-core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "interactivesolutions\\rivile\\": "src/"
+        }
+    }
+}
