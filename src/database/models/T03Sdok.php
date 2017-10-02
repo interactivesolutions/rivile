@@ -1,4 +1,4 @@
-<?php namespace app\database\models;
+<?php namespace interactivesolutions\rivile\database\models;
 
 use interactivesolutions\honeycombcore\models\HCUuidModel;
 
