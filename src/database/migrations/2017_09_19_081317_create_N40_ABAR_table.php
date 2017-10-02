@@ -14,7 +14,7 @@ class CreateN40ABARTable extends Migration {
 	{
 		Schema::create('N40_ABAR', function(Blueprint $table)
 		{
-			$table->integer('COUNT', true);
+			$table->integer('count', true);
 			$table->string('id', 36)->unique('ID_UNIQUE');
 			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));

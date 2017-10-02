@@ -14,7 +14,7 @@ class CreateI08PARTTable extends Migration {
 	{
 		Schema::create('I08_PART', function(Blueprint $table)
 		{
-			$table->integer('COUNT', true);
+			$table->integer('count', true);
 			$table->string('id', 36)->unique('ID_UNIQUE');
 			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
