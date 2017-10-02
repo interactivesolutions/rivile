@@ -15,10 +15,10 @@ class CreateI05ATDTable extends Migration {
 		Schema::create('I05_ATD', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('I05_KODAS_CH', 12)->nullable()->comment('Operacijos numeris');
 			$table->string('I05_EIL_NR', 6)->nullable()->comment('Eilutės numeris dokumente');
 			$table->string('I05_DOK_NR', 20)->nullable()->comment('Dokumento numeris');

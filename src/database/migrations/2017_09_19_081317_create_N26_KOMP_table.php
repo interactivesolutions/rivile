@@ -15,10 +15,10 @@ class CreateN26KOMPTable extends Migration {
 		Schema::create('N26_KOMP', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('N26_KODAS_PS', 12)->nullable()->comment('Gaminio kodas');
 			$table->integer('N26_EIL_NR')->nullable()->comment('Eilutės numeris');
 			$table->integer('N26_TIPAS')->nullable()->comment('Komponentės tipas:1-prekė,2-kodas');

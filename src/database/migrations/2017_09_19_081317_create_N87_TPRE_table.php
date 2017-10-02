@@ -15,10 +15,10 @@ class CreateN87TPRETable extends Migration {
 		Schema::create('N87_TPRE', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('N87_KODAS_PS', 12)->nullable()->comment('Prekė');
 			$table->string('N87_KODAS_US', 12)->nullable()->comment('Mat.Vnt.');
 			$table->string('N87_KODAS_KS', 12)->nullable()->comment('Klientas');

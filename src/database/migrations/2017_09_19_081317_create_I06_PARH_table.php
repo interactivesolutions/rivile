@@ -15,10 +15,10 @@ class CreateI06PARHTable extends Migration {
 		Schema::create('I06_PARH', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('I06_KODAS_PO', 12)->nullable()->comment('Operacijos numeris');
 			$table->integer('I06_OP_TIP')->nullable()->comment('Tipas: pirkimų (1-V,2-G,3-U,4-P) pardavimų (51-V,52-G,53-U,54-R,55-P,56-POS)');
 			$table->boolean('I06_VAL_POZ')->nullable()->comment('Ar valiutinis dokumentas?:0-ne,1-taip');

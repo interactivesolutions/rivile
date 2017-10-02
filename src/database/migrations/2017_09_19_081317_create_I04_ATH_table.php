@@ -15,10 +15,10 @@ class CreateI04ATHTable extends Migration {
 		Schema::create('I04_ATH', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('I04_KODAS_CH', 12)->nullable()->comment('Operacijos numeris');
 			$table->string('I04_DOK_NR', 20)->nullable()->comment('Dokumento numeris');
 			$table->integer('I04_OP_RUSIS')->nullable()->comment('Rūšis:1-įplaukos,2-išmokos');

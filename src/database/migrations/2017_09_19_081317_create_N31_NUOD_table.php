@@ -15,10 +15,10 @@ class CreateN31NUODTable extends Migration {
 		Schema::create('N31_NUOD', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('N31_KODAS_NS', 12)->nullable()->comment('Nuolaidos lentelės kodas');
 			$table->integer('N31_EIL_NR')->nullable()->comment('Detalios eilutės numeris');
 			$table->float('N31_MINIMUM', 14, 3)->nullable()->comment('Minimalus kiekis pagrindiniu matu');

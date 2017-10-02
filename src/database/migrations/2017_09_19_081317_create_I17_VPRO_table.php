@@ -15,10 +15,10 @@ class CreateI17VPROTable extends Migration {
 		Schema::create('I17_VPRO', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('I17_KODAS_IS', 12)->nullable()->comment('Padalinio kodas');
 			$table->string('I17_KODAS_PS', 12)->nullable()->comment('Prekės kodas');
 			$table->string('I17_KODAS_OS', 12)->nullable()->comment('Objekto kodas');

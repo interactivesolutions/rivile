@@ -15,10 +15,10 @@ class CreateI10VIDTable extends Migration {
 		Schema::create('I10_VID', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('I10_KODAS_VD', 12)->nullable()->comment('Operacijos numeris');
 			$table->integer('I10_EIL_NR')->nullable()->comment('Detalios eilutės numeris');
 			$table->string('I10_KODAS_TR', 12)->nullable()->comment('Transporto operacijos numeris');

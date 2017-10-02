@@ -15,10 +15,10 @@ class CreateT03SDOKTable extends Migration {
 		Schema::create('T03_SDOK', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('T03_KODAS_KS', 12)->nullable()->comment('Kliento kodas');
 			$table->string('T03_DOK_NR', 20)->nullable()->comment('Dokumento numeris');
 			$table->dateTime('T03_DATA_MOK')->nullable()->comment('Mokėjimo data');

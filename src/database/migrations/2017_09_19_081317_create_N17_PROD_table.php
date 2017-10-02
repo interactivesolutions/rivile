@@ -15,10 +15,10 @@ class CreateN17PRODTable extends Migration {
 		Schema::create('N17_PROD', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('N17_KODAS_PS', 12)->nullable()->comment('Prekės kodas');
 			$table->integer('N17_TIPAS')->nullable()->comment('Tipas:1-prekė,2-paslauga');
 			$table->string('N17_KODAS_P1', 12)->nullable()->comment('Pirmas alternatyvus kodas');

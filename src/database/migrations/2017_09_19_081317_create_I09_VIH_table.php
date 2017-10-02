@@ -15,10 +15,10 @@ class CreateI09VIHTable extends Migration {
 		Schema::create('I09_VIH', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('I09_KODAS_VD', 12)->nullable()->comment('Operacijos numeris');
 			$table->integer('I09_TIPAS')->nullable()->comment('Dokumento tipas:1-važtaraštis,2-užsakymas');
 			$table->string('I09_DOK_NR', 12)->nullable()->comment('Dokumento numeris');

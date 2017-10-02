@@ -15,10 +15,10 @@ class CreateI44SKOLTable extends Migration {
 		Schema::create('I44_SKOL', function(Blueprint $table)
 		{
 			$table->integer('COUNT', true);
-			$table->string('ID', 36)->unique('ID_UNIQUE');
-			$table->timestamp('CREATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->timestamp('UPDATED_AT')->default(DB::raw('CURRENT_TIMESTAMP'));
-			$table->dateTime('DELETED_AT')->nullable();
+			$table->string('id', 36)->unique('ID_UNIQUE');
+			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->dateTime('deleted_at')->nullable();
 			$table->string('I44_MODUL', 2)->nullable()->comment('Modulis');
 			$table->string('I44_KODAS_OP', 12)->nullable()->comment('Operacijos numeris');
 			$table->integer('I44_EIL_NR')->nullable()->comment('Eilutės numeris operacijoje');
