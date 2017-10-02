@@ -1,21 +1,40 @@
 {
-    "general":
-    {
+    "general": {
         "serviceProviderNameSpace": "Rivile"
     },
-    "formData":
-    [
+    "formData": {
+        "rivile-clients": "interactivesolutions\\rivile\\app\\forms\\rivile\\HCRivileClientsForm"
+    },
+    "adminMenu": [
+        {
+            "route": "admin.routes.rivile.clients.index",
+            "translation": "Rivile::rivile_clients.page_title",
+            "icon": "",
+            "aclPermission": "interactivesolutions_rivile_routes_rivile_clients_list",
+            "priority": 10
+        }
     ],
-    "adminMenu":
-    [
-    ],
-    "acl":
-    {
-        "permissions" :
-        [
+    "acl": {
+        "permissions": [
+            {
+                "name": "admin.routes.rivile.clients",
+                "controller": "interactivesolutions\\rivile\\app\\http\\controllers\\rivile\\HCRivileClientsController",
+                "actions": [
+                    "interactivesolutions_rivile_routes_rivile_clients_list",
+                    "interactivesolutions_rivile_routes_rivile_clients_create",
+                    "interactivesolutions_rivile_routes_rivile_clients_update",
+                    "interactivesolutions_rivile_routes_rivile_clients_delete",
+                    "interactivesolutions_rivile_routes_rivile_clients_force_delete"
+                ]
+            }
         ],
-        "rolesActions" :
-        [
-        ]
+        "rolesActions": {
+            "project-admin": [
+                "interactivesolutions_rivile_routes_rivile_clients_list",
+                "interactivesolutions_rivile_routes_rivile_clients_create",
+                "interactivesolutions_rivile_routes_rivile_clients_update",
+                "interactivesolutions_rivile_routes_rivile_clients_delete"
+            ]
+        }
     }
 }
