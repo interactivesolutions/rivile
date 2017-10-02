@@ -6,7 +6,7 @@ class N08Klij extends HCUuidModel
 {
     protected $table = 'N08_KLIJ';
 
-    protected $fillable = ['ID', 'N08_KODAS_KS', 'N08_RUSIS', 'N08_PVM_KODAS', 'N08_IM_KODAS', 'N08_PAV', 'N08_ADR',
+    protected $fillable = ['id', 'N08_KODAS_KS', 'N08_RUSIS', 'N08_PVM_KODAS', 'N08_IM_KODAS', 'N08_PAV', 'N08_ADR',
         'N08_KODAS_VS', 'N08_PASTAS', 'N08_ATSTOVAS', 'N08_E_MAIL', 'N08_FAX_NUM', 'N08_TEL', 'N08_MOB_TEL',
         'N08_KODAS_LS_1', 'N08_KODAS_LS_2', 'N08_KODAS_LS_3', 'N08_KODAS_LS_4', 'N08_TIPAS_PIRK', 'N08_TIPAS_TIEK',
         'N08_KODAS_GS', 'N08_CREDIT_LIM', 'N08_KODAS_DS', 'N08_DELSPINIGIAI', 'N08_KODAS_QS', 'N08_NUOL_GR',

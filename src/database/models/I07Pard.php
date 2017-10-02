@@ -6,7 +6,7 @@ class I07Pard extends HCUuidModel
 {
     protected $table = 'I07_PARD';
 
-    protected $fillable = ['ID', 'I07_KODAS_PO', 'I07_EIL_NR', 'I07_TIPAS', 'I07_KODAS', 'I07_PAV', 'I07_KODAS_TR',
+    protected $fillable = ['id', 'I07_KODAS_PO', 'I07_EIL_NR', 'I07_TIPAS', 'I07_KODAS', 'I07_PAV', 'I07_KODAS_TR',
         'I07_KODAS_IS', 'I07_KODAS_OS', 'I07_KODAS_OS_C', 'I07_SERIJA', 'I07_KODAS_US', 'I07_KIEKIS', 'I07_FRAKCIJA',
         'I07_KODAS_US_P', 'I07_KODAS_US_A', 'I07_ALT_KIEKIS', 'I07_ALT_FRAK', 'I07_VAL_KAINA', 'I07_SUMA_VAL',
         'I07_KAINA_BE', 'I07_KAINA_SU', 'I07_NUOLAIDA', 'I07_ISLAIDU_M', 'I07_ISLAIDOS', 'I07_ISLAIDOS_PVM',

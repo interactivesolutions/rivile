@@ -6,7 +6,7 @@ class N17Prod extends HCUuidModel
 {
     protected $table = 'N17_PROD';
 
-    protected $fillable = ['ID',
+    protected $fillable = ['id',
         'N17_KODAS_PS', 'N17_TIPAS', 'N17_KODAS_P1', 'N17_KODAS_P2', 'N17_KODAS_US', 'N17_PAV', 'N17_PAVU',
         'N17_KODAS_KS', 'N17_KOD_T', 'N17_KODAS_KS', 'N17_KOD_T1', 'N17_KODAS_KS2', 'N17_KOD_T2', 'N17_KODAS_VS',
         'N17_KODAS_ES', 'N17_UZSIGUL', 'N17_BAZ_KIEKIS', 'N17_ASSEMBLY', 'N17_KODAS_LS_1', 'N17_KODAS_LS_2',

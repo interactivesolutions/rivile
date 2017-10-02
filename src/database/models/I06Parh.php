@@ -6,7 +6,7 @@ class I06Parh extends HCUuidModel
 {
     protected $table = 'I06_PARH';
 
-    protected $fillable = ['ID', 'CREATED_AT', 'UPDATED_AT', 'DELETED_AT', 'I06_KODAS_PO',
+    protected $fillable = ['id', 'CREATED_AT', 'UPDATED_AT', 'DELETED_AT', 'I06_KODAS_PO',
         'I06_OP_TIP', 'I06_VAL_POZ', 'I06_PVM_TIP', 'I06_OP_STORNO', 'I06_DOK_NR',
         'I06_OP_DATA', 'I06_DOK_DATA', 'I06_KODAS_MS', 'I06_KODAS_KS', 'I06_KODAS_SS',
         'I06_PAV', 'I06_ADR', 'I06_ATSTOVAS', 'I06_KODAS_VS', 'I06_PAV2', 'I06_ADR2',
