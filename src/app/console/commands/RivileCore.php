@@ -55,7 +55,7 @@ class RivileCore extends Command
      *
      * @var
      */
-    private $operation;
+    protected $operation;
 
     /**
      * List type for retrieving data
@@ -96,15 +96,14 @@ class RivileCore extends Command
         $this->comment($this->description);
         $this->init();
         $this->validate();
-        $this->makeCall ();
+        $this->makeCall();
     }
 
     protected function makeCall ()
     {
         $soapClient = new SoapClient($this->url);
 
-        switch ($this->actionMethod)
-        {
+        switch ($this->actionMethod) {
             case self::ACTION_METHOD_GET :
 
                 if ($this->listType && $this->filters)
@@ -120,23 +119,64 @@ class RivileCore extends Command
             case self::ACTION_METHOD_NEW :
             case self::ACTION_METHOD_UPDATE:
 
-                $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}($this->key, $this->operation, $this->data)));
+
+                array_forget($this->data, ['id', 'count', 'created_at', 'updated_at', 'deleted_at']);
+
+                $xml = $this->array2xml($this->data, $this->action, true);
+
+                $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}($this->key, $this->operation, $xml)));
                 break;
         }
+    }
+
+    /**
+     * Function returns XML string for input associative array.
+     * @param Array $array Input associative array
+     * @param String $wrap Wrapping tag
+     * @param Boolean $upper To set tags in uppercase
+     * @return string
+     */
+    function array2xml ($array, $wrap = 'ROW0', $upper = true)
+    {
+        // set initial value for XML string
+        $xml = '';
+        // wrap XML with $wrap TAG
+        if ($wrap != null) {
+            $xml .= "<$wrap>\n";
+        }
+        // main loop
+        foreach ($array as $key => $value) {
+            // set tags in uppercase if needed
+            if ($upper == true) {
+                $key = strtoupper($key);
+            }
+            // append to XML string
+            $xml .= "<$key>" . htmlspecialchars(trim($value)) . "</$key>";
+        }
+        // close wrap TAG if needed
+        if ($wrap != null) {
+            $xml .= "\n</$wrap>\n";
+        }
+        // return prepared XML string
+        return $xml;
     }
 
     private function getAction ()
     {
-        switch ($this->actionMethod)
-        {
+        switch ($this->actionMethod) {
             case self::ACTION_METHOD_GET :
 
-                return'GET_' . $this->action . '_LIST';
-                break;
+                return 'GET_' . $this->action . '_LIST';
+
+            case self::ACTION_METHOD_UPDATE :
+            case self::ACTION_METHOD_NEW :
+            case self::ACTION_METHOD_DELETE :
+
+                return 'EDIT_' . $this->action;
         }
     }
 
-    private function xmlToArray($response)
+    private function xmlToArray ($response)
     {
         $response = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $response);
         $response = preg_replace('#&(?=[a-z_0-9]+=)#', '&amp;', $response);
@@ -147,6 +187,16 @@ class RivileCore extends Command
         $xml = new SimpleXMLElement($response);
         $array = json_decode(json_encode((array)$xml), TRUE);
 
+        if (isset($array['ERROR']))
+        {
+            $message = '';
+
+            foreach ($array['ERROR'] as $key => $error)
+                $message .= $key . ' ' . $error;
+
+            throw new \Exception($message);
+
+        }
         $array = $this->clearArrayFromEmptyArrays($array[$this->action]);
 
         return $array;
@@ -154,10 +204,8 @@ class RivileCore extends Command
 
     private function clearArrayFromEmptyArrays (array $array)
     {
-        foreach ($array as &$item)
-        {
-            if (gettype($item) == 'array')
-            {
+        foreach ($array as &$item) {
+            if (gettype($item) == 'array') {
                 if (sizeof($item) <= 1)
                     $item = null;
                 else
@@ -168,14 +216,13 @@ class RivileCore extends Command
         return $array;
     }
 
-    protected function _handleResponse(array $response)
+    protected function _handleResponse (array $response)
     {
         DB::beginTransaction();
 
         try {
             $this->handleResponse($response);
-        } catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             DB::rollback();
             throw new \Exception($e);
         }
@@ -185,7 +232,8 @@ class RivileCore extends Command
 
     protected function handleResponse (array $response)
     {
-
+        if (isset($response['error']))
+            throw new \Exception($response['error']);
     }
 
     /**
@@ -201,7 +249,7 @@ class RivileCore extends Command
      *
      * @throws \Exception
      */
-    private function validate()
+    private function validate ()
     {
         $this->url = config('rivile.url');
         $this->key = config('rivile.key');
@@ -219,7 +267,7 @@ class RivileCore extends Command
     protected function clearEmptySpaces (array &$list)
     {
         foreach ($list as &$string)
-            while($string[strlen($string) - 1] == ' ')
+            while ($string[strlen($string) - 1] == ' ')
                 $string = substr($string, 0, -1);
     }
 }

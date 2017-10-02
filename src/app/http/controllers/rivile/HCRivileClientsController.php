@@ -3,6 +3,7 @@
 namespace interactivesolutions\rivile\app\http\controllers\rivile;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Artisan;
 use interactivesolutions\honeycombcore\http\controllers\HCBaseController;
 use interactivesolutions\rivile\app\validators\rivile\HCRivileClientsValidator;
 use interactivesolutions\rivile\database\models\N08Klij;
@@ -89,6 +90,8 @@ class HCRivileClientsController extends HCBaseController
 
         $record = N08Klij::create(array_get($data, 'record'));
 
+        Artisan::call('rivile:export-client', ['action' => 'new', 'id' => $record->id]);
+
         return $this->apiShow($record->id);
     }
 
@@ -105,6 +108,7 @@ class HCRivileClientsController extends HCBaseController
         $data = $this->getInputData();
 
         $record->update(array_get($data, 'record', []));
+        Artisan::call('rivile:export-client', ['action' => 'update', 'id' => $record->id]);
 
         return $this->apiShow($record->id);
     }

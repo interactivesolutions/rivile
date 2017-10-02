@@ -12,7 +12,8 @@ class HCRivileClientsValidator extends HCCoreFormValidator
     protected function rules()
     {
         return [
-
+            'N08_KODAS_DS' => 'required',
+            'N08_KODAS_KS' => 'required',
         ];
     }
 }

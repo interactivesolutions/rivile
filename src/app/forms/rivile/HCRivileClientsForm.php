@@ -2,6 +2,8 @@
 
 namespace interactivesolutions\rivile\app\forms\rivile;
 
+use interactivesolutions\rivile\database\models\N08Klij;
+
 class HCRivileClientsForm
 {
     // name of the form
@@ -32,8 +34,18 @@ class HCRivileClientsForm
                     "type"            => "singleLine",
                     "fieldID"         => "N08_KODAS_KS",
                     "label"           => trans("Rivile::rivile_clients.N08_KODAS_KS"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
+                    "required"        => 1,
+                    "requiredVisible" => 1,
+                ], [
+                    "type"            => "dropDownList",
+                    "fieldID"         => "N08_KODAS_DS",
+                    "label"           => trans("Rivile::rivile_clients.N08_KODAS_DS"),
+                    "required"        => 1,
+                    "requiredVisible" => 1,
+                    "search" => [
+                        "maximumSelectionLength" => 1
+                    ],
+                    "options"         => $this->get_N08_KODAS_DS()
                 ], [
                     "type"            => "singleLine",
                     "fieldID"         => "N08_RUSIS",
@@ -154,13 +166,7 @@ class HCRivileClientsForm
                     "label"           => trans("Rivile::rivile_clients.N08_CREDIT_LIM"),
                     "required"        => 0,
                     "requiredVisible" => 0,
-                ], [
-                    "type"            => "singleLine",
-                    "fieldID"         => "N08_KODAS_DS",
-                    "label"           => trans("Rivile::rivile_clients.N08_KODAS_DS"),
-                    "required"        => 0,
-                    "requiredVisible" => 0,
-                ], [
+                ],  [
                     "type"            => "singleLine",
                     "fieldID"         => "N08_DELSPINIGIAI",
                     "label"           => trans("Rivile::rivile_clients.N08_DELSPINIGIAI"),
@@ -474,5 +480,21 @@ class HCRivileClientsForm
         // $form['structure'][] = [];
 
         return $form;
+    }
+
+    private function get_N08_KODAS_DS ()
+    {
+        $options = [];
+        $list = N08Klij::orderBy('N08_KODAS_DS', 'asc')->whereNotNull('N08_KODAS_DS')->select('N08_KODAS_DS')->distinct('N08_KODAS_DS')->pluck('N08_KODAS_DS');
+
+        foreach ($list as $value)
+        {
+            $item ['id'] = $value;
+            $item ['label'] = $value;
+
+            $options[] = $item;
+        }
+
+        return $options;
     }
 }
