@@ -5,9 +5,12 @@ namespace interactivesolutions\rivile\app\providers;
 use interactivesolutions\honeycombcore\providers\HCBaseServiceProvider;
 use interactivesolutions\rivile\app\console\commands\GetClients;
 use interactivesolutions\rivile\app\console\commands\export\ExportClient;
+use interactivesolutions\rivile\app\console\commands\GetProducts;
 use interactivesolutions\rivile\app\console\commands\import\ImportClients;
+use interactivesolutions\rivile\app\console\commands\import\ImportProducts;
 use interactivesolutions\rivile\app\console\commands\update\UpdateClients;
 use interactivesolutions\rivile\app\console\commands\RivileCore;
+use interactivesolutions\rivile\app\console\commands\update\UpdateProducts;
 
 class RivileServiceProvider extends HCBaseServiceProvider
 {
@@ -17,10 +20,13 @@ class RivileServiceProvider extends HCBaseServiceProvider
         RivileCore::class,
 
         GetClients::class,
+        GetProducts::class,
 
         ImportClients::class,
+        ImportProducts::class,
 
         UpdateClients::class,
+        UpdateProducts::class,
 
         ExportClient::class,
     ];

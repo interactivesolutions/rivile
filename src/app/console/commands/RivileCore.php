@@ -43,6 +43,11 @@ class RivileCore extends Command
     protected $action;
 
     /**
+     * XML root name
+     */
+    protected $xmlRootName;
+
+    /**
      * Setting action method
      * @var
      */
@@ -197,7 +202,8 @@ class RivileCore extends Command
             throw new \Exception($message);
 
         }
-        $array = $this->clearArrayFromEmptyArrays($array[$this->action]);
+
+        $array = $this->clearArrayFromEmptyArrays($array[$this->xmlRootName]);
 
         return $array;
     }
