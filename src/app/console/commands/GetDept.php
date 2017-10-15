@@ -1,32 +1,32 @@
 <?php namespace interactivesolutions\rivile\app\console\commands;
 
 use interactivesolutions\honeycombcore\commands\HCCommand;
-use interactivesolutions\rivile\database\models\I04Ath;
+use interactivesolutions\rivile\database\models\I44Skol;
 
-class GetPayments extends HCCommand
+class GetDept extends HCCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'rivile:get-payments';
+    protected $signature = 'rivile:get-dept';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'GET_I04_LIST - import or update';
+    protected $description = 'GET_I44_LIST - import or update';
 
     /**
      * Initializing data
      */
     public function handle ()
     {
-        if (I04Ath::count() > 0)
-            $this->call('rivile:update-payments');
+        if (I44Skol::count() > 0)
+            $this->call('rivile:update-dept');
         else
-            $this->call('rivile:import-payments');
+            $this->call('rivile:import-dept');
     }
 }
