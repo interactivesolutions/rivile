@@ -1,30 +1,30 @@
 <?php namespace interactivesolutions\rivile\app\console\commands\export;
 
 use interactivesolutions\rivile\app\console\commands\RivileCore;
-use interactivesolutions\rivile\database\models\N08Klij;
+use interactivesolutions\rivile\database\models\N17Prod;
 
-class ExportClient extends RivileCore
+class ExportProduct extends RivileCore
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'rivile:export-client {action} {id}';
+    protected $signature = 'rivile:export-product {action} {id}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'EDIT_N08 - Export';
+    protected $description = 'EDIT_N17 - Export';
 
     /**
      * Initializing data
      */
     protected function init ()
     {
-        $this->action = 'N08';
+        $this->action = 'N17';
 
         switch ($this->argument('action'))
         {
@@ -41,6 +41,6 @@ class ExportClient extends RivileCore
                 break;
         }
 
-        $this->data = N08Klij::find($this->argument('id'))->toArray();
+        $this->data = N17Prod::find($this->argument('id'))->toArray();
     }
 }

@@ -27,7 +27,7 @@ class HCRivilePaymentsController extends HCBaseController
             'imagesUrl'   => route('resource.get', ['/']),
             'headers'     => $this->getAdminListHeader(),
         ];
-        
+
         $config['actions'][] = 'search';
         $config['filters'] = $this->getFilters();
 
