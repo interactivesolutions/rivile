@@ -1,12 +1,24 @@
 {
   "name": "interactivesolutions/rivile",
-  "description": "",
+  "description": "Rivile package",
   "keywords": [
+    "honeycomb",
     "rivile",
-    "laravel"
+    "laravel",
+    "package"
   ],
+  "homepage": "https://github.com/interactivesolutions/rivile",
   "license": "MIT",
-  "authors": [],
+  "authors": [
+    {
+      "name": "Jevgenij Dmitrijev",
+      "email": "jd@interactivesolutions.lt"
+    },
+    {
+      "name": "Mantas Paulauskas",
+      "email": "mantopastas@gmail.com"
+    }
+  ],
   "repositories": [],
   "require": {
     "php": ">=7.1",
@@ -14,9 +26,31 @@
     "interactivesolutions/honeycomb-core": "~1.1.0",
     "ext-soap": "*"
   },
+  "require-dev": {
+    "brianium/paratest": "^1.0",
+    "mockery/mockery": "^1.0",
+    "orchestra/testbench-browser-kit": "^3.5",
+    "phpunit/phpunit": "^6.4"
+  },
   "autoload": {
     "psr-4": {
       "InteractiveSolutions\\Rivile\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "paratest -p4 --colors"
+    ]
+  },
+  "config": {
+    "secure-http": false,
+    "platform": {
+      "php": "7.1"
     }
   }
 }
