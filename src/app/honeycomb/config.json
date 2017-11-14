@@ -12,28 +12,28 @@
     {
       "route": "admin.routes.rivile.clients.index",
       "translation": "Rivile::rivile_clients.page_title",
-      "icon": "",
+      "icon": "fa-registered",
       "aclPermission": "interactivesolutions_rivile_routes_rivile_clients_list",
       "priority": 10
     },
     {
       "route": "admin.routes.rivile.products.index",
       "translation": "Rivile::rivile_products.page_title",
-      "icon": "",
+      "icon": "fa-registered",
       "aclPermission": "interactivesolutions_rivile_routes_rivile_products_list",
       "priority": 10
     },
     {
       "route": "admin.routes.rivile.payments.index",
       "translation": "Rivile::rivile_payments.page_title",
-      "icon": "",
+      "icon": "fa-registered",
       "aclPermission": "interactivesolutions_rivile_routes_rivile_payments_list",
       "priority": 10
     },
     {
       "route": "admin.routes.rivile.dept.index",
       "translation": "Rivile::rivile_dept.page_title",
-      "icon": "",
+      "icon": "fa-registered",
       "aclPermission": "interactivesolutions_rivile_routes_rivile_dept_list",
       "priority": 10
     }

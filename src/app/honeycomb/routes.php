@@ -1,6 +1,6 @@
 <?php
 
-//src/app/routes//admin/01_routes.rivile.clients.php
+//interactivesolutions/rivile/src/Routes/Admin/01_routes.rivile.clients.php
 
 
 Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth']], function() {
@@ -87,7 +87,8 @@ Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth'
 });
 
 
-//src/app/routes//admin/02_routes.rivile.products.php
+
+//interactivesolutions/rivile/src/Routes/Admin/02_routes.rivile.products.php
 
 
 Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth']], function() {
@@ -174,7 +175,8 @@ Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth'
 });
 
 
-//src/app/routes//admin/03_routes.rivile.payments.php
+
+//interactivesolutions/rivile/src/Routes/Admin/03_routes.rivile.payments.php
 
 
 Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth']], function() {
@@ -261,7 +263,8 @@ Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth'
 });
 
 
-//src/app/routes//admin/04_routes.rivile.dept.php
+
+//interactivesolutions/rivile/src/Routes/Admin/04_routes.rivile.dept.php
 
 
 Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth']], function() {
@@ -348,7 +351,8 @@ Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth'
 });
 
 
-//src/app/routes//api/01_routes.rivile.clients.php
+
+//interactivesolutions/rivile/src/Routes/Api/01_routes.rivile.clients.php
 
 
 Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function() {
@@ -436,7 +440,8 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function() {
     });
 });
 
-//src/app/routes//api/02_routes.rivile.products.php
+
+//interactivesolutions/rivile/src/Routes/Api/02_routes.rivile.products.php
 
 
 Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function() {
@@ -524,7 +529,8 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function() {
     });
 });
 
-//src/app/routes//api/03_routes.rivile.payments.php
+
+//interactivesolutions/rivile/src/Routes/Api/03_routes.rivile.payments.php
 
 
 Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function() {
@@ -612,7 +618,8 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function() {
     });
 });
 
-//src/app/routes//api/04_routes.rivile.dept.php
+
+//interactivesolutions/rivile/src/Routes/Api/04_routes.rivile.dept.php
 
 
 Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function() {
@@ -699,3 +706,4 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth-apps']], function() {
         });
     });
 });
+
