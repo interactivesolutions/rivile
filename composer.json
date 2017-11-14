@@ -1,19 +1,22 @@
 {
-    "name": "interactivesolutions/rivile",
-    "description": "",
-    "keywords": [],
-    "license": "MIT",
-    "authors": [],
-    "repositories": [],
-    "require": {
-        "php": ">=7.0.0",
-        "laravel/framework": "5.3.*",
-        "ext-soap": "*",
-        "interactivesolutions/honeycomb-core": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "interactivesolutions\\rivile\\": "src/"
-        }
+  "name": "interactivesolutions/rivile",
+  "description": "",
+  "keywords": [
+    "rivile",
+    "laravel"
+  ],
+  "license": "MIT",
+  "authors": [],
+  "repositories": [],
+  "require": {
+    "php": ">=7.1",
+    "laravel/framework": "^5.5",
+    "interactivesolutions/honeycomb-core": "~1.1.0",
+    "ext-soap": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "InteractiveSolutions\\Rivile\\": "src/"
     }
+  }
 }

@@ -9,14 +9,14 @@ composer require interactivesolutions/rivile
 After updating composer, add the ServiceProvider to the providers array in config/app.php
 
 ```php
-interactivesolutions\rivile\app\providers\RivileServiceProvider::class,
+InteractiveSolutions\Rivile\Providers\RivileServiceProvider::class,
 ```
 
 
 Copy the package config to your local config with the publish command:
 
 ```shell
-php artisan vendor:publish --provider="interactivesolutions\rivile\app\providers\RivileServiceProvider"
+php artisan vendor:publish --provider="InteractiveSolutions\Rivile\Providers\RivileServiceProvider::class,"
 ```
 
 Add new parameter into .evn

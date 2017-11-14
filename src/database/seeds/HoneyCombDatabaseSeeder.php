@@ -1,5 +1,6 @@
 <?php
-namespace interactivesolutions\rivile\database\seeds;
+
+namespace InteractiveSolutions\Rivile\database\seeds;
 
 use Illuminate\Database\Seeder;
 

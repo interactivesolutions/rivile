@@ -1,109 +1,109 @@
 {
-    "general": {
-        "serviceProviderNameSpace": "Rivile"
+  "general": {
+    "serviceProviderNameSpace": "Rivile"
+  },
+  "formData": {
+    "rivile-clients": "InteractiveSolutions\\Rivile\\Forms\\Rivile\\HCRivileClientsForm",
+    "rivile-products": "InteractiveSolutions\\Rivile\\Forms\\Rivile\\HCRivileProductsForm",
+    "rivile-payments": "InteractiveSolutions\\Rivile\\Forms\\Rivile\\HCRivilePaymentsForm",
+    "rivile-dept": "InteractiveSolutions\\Rivile\\Forms\\Rivile\\HCRivileDeptForm"
+  },
+  "adminMenu": [
+    {
+      "route": "admin.routes.rivile.clients.index",
+      "translation": "Rivile::rivile_clients.page_title",
+      "icon": "",
+      "aclPermission": "interactivesolutions_rivile_routes_rivile_clients_list",
+      "priority": 10
     },
-    "formData": {
-        "rivile-clients": "interactivesolutions\\rivile\\app\\forms\\rivile\\HCRivileClientsForm",
-        "rivile-products": "interactivesolutions\\rivile\\app\\forms\\rivile\\HCRivileProductsForm",
-        "rivile-payments": "interactivesolutions\\rivile\\app\\forms\\rivile\\HCRivilePaymentsForm",
-        "rivile-dept": "interactivesolutions\\rivile\\app\\forms\\rivile\\HCRivileDeptForm"
+    {
+      "route": "admin.routes.rivile.products.index",
+      "translation": "Rivile::rivile_products.page_title",
+      "icon": "",
+      "aclPermission": "interactivesolutions_rivile_routes_rivile_products_list",
+      "priority": 10
     },
-    "adminMenu": [
-        {
-            "route": "admin.routes.rivile.clients.index",
-            "translation": "Rivile::rivile_clients.page_title",
-            "icon": "",
-            "aclPermission": "interactivesolutions_rivile_routes_rivile_clients_list",
-            "priority": 10
-        },
-        {
-            "route": "admin.routes.rivile.products.index",
-            "translation": "Rivile::rivile_products.page_title",
-            "icon": "",
-            "aclPermission": "interactivesolutions_rivile_routes_rivile_products_list",
-            "priority": 10
-        },
-        {
-            "route": "admin.routes.rivile.payments.index",
-            "translation": "Rivile::rivile_payments.page_title",
-            "icon": "",
-            "aclPermission": "interactivesolutions_rivile_routes_rivile_payments_list",
-            "priority": 10
-        },
-        {
-            "route": "admin.routes.rivile.dept.index",
-            "translation": "Rivile::rivile_dept.page_title",
-            "icon": "",
-            "aclPermission": "interactivesolutions_rivile_routes_rivile_dept_list",
-            "priority": 10
-        }
-    ],
-    "acl": {
-        "permissions": [
-            {
-                "name": "admin.routes.rivile.clients",
-                "controller": "interactivesolutions\\rivile\\app\\http\\controllers\\rivile\\HCRivileClientsController",
-                "actions": [
-                    "interactivesolutions_rivile_routes_rivile_clients_list",
-                    "interactivesolutions_rivile_routes_rivile_clients_create",
-                    "interactivesolutions_rivile_routes_rivile_clients_update",
-                    "interactivesolutions_rivile_routes_rivile_clients_delete",
-                    "interactivesolutions_rivile_routes_rivile_clients_force_delete"
-                ]
-            },
-            {
-                "name": "admin.routes.rivile.products",
-                "controller": "interactivesolutions\\rivile\\app\\http\\controllers\\rivile\\HCRivileProductsController",
-                "actions": [
-                    "interactivesolutions_rivile_routes_rivile_products_list",
-                    "interactivesolutions_rivile_routes_rivile_products_create",
-                    "interactivesolutions_rivile_routes_rivile_products_update",
-                    "interactivesolutions_rivile_routes_rivile_products_delete",
-                    "interactivesolutions_rivile_routes_rivile_products_force_delete"
-                ]
-            },
-            {
-                "name": "admin.routes.rivile.payments",
-                "controller": "interactivesolutions\\rivile\\app\\http\\controllers\\rivile\\HCRivilePaymentsController",
-                "actions": [
-                    "interactivesolutions_rivile_routes_rivile_payments_list",
-                    "interactivesolutions_rivile_routes_rivile_payments_create",
-                    "interactivesolutions_rivile_routes_rivile_payments_update",
-                    "interactivesolutions_rivile_routes_rivile_payments_delete",
-                    "interactivesolutions_rivile_routes_rivile_payments_force_delete"
-                ]
-            },
-            {
-                "name": "admin.routes.rivile.dept",
-                "controller": "interactivesolutions\\rivile\\app\\http\\controllers\\rivile\\HCRivileDeptController",
-                "actions": [
-                    "interactivesolutions_rivile_routes_rivile_dept_list",
-                    "interactivesolutions_rivile_routes_rivile_dept_create",
-                    "interactivesolutions_rivile_routes_rivile_dept_update",
-                    "interactivesolutions_rivile_routes_rivile_dept_delete",
-                    "interactivesolutions_rivile_routes_rivile_dept_force_delete"
-                ]
-            }
-        ],
-        "rolesActions": {
-            "project-admin": [
-                "interactivesolutions_rivile_routes_rivile_clients_list",
-                "interactivesolutions_rivile_routes_rivile_clients_create",
-                "interactivesolutions_rivile_routes_rivile_clients_update",
-                "interactivesolutions_rivile_routes_rivile_clients_delete",
-                "interactivesolutions_rivile_routes_rivile_products_list",
-                "interactivesolutions_rivile_routes_rivile_products_create",
-                "interactivesolutions_rivile_routes_rivile_products_update",
-                "interactivesolutions_rivile_routes_rivile_products_delete",
-                "interactivesolutions_rivile_routes_rivile_payments_list",
-                "interactivesolutions_rivile_routes_rivile_payments_create",
-                "interactivesolutions_rivile_routes_rivile_payments_update",
-                "interactivesolutions_rivile_routes_rivile_payments_delete",
-                "interactivesolutions_rivile_routes_rivile_dept_list",
-                "interactivesolutions_rivile_routes_rivile_dept_create",
-                "interactivesolutions_rivile_routes_rivile_dept_update",
-                "interactivesolutions_rivile_routes_rivile_dept_delete"
-            ]
-        }
+    {
+      "route": "admin.routes.rivile.payments.index",
+      "translation": "Rivile::rivile_payments.page_title",
+      "icon": "",
+      "aclPermission": "interactivesolutions_rivile_routes_rivile_payments_list",
+      "priority": 10
+    },
+    {
+      "route": "admin.routes.rivile.dept.index",
+      "translation": "Rivile::rivile_dept.page_title",
+      "icon": "",
+      "aclPermission": "interactivesolutions_rivile_routes_rivile_dept_list",
+      "priority": 10
     }
+  ],
+  "acl": {
+    "permissions": [
+      {
+        "name": "admin.routes.rivile.clients",
+        "controller": "InteractiveSolutions\\Rivile\\Http\\Controllers\\Rivile\\HCRivileClientsController",
+        "actions": [
+          "interactivesolutions_rivile_routes_rivile_clients_list",
+          "interactivesolutions_rivile_routes_rivile_clients_create",
+          "interactivesolutions_rivile_routes_rivile_clients_update",
+          "interactivesolutions_rivile_routes_rivile_clients_delete",
+          "interactivesolutions_rivile_routes_rivile_clients_force_delete"
+        ]
+      },
+      {
+        "name": "admin.routes.rivile.products",
+        "controller": "InteractiveSolutions\\Rivile\\Http\\Controllers\\Rivile\\HCRivileProductsController",
+        "actions": [
+          "interactivesolutions_rivile_routes_rivile_products_list",
+          "interactivesolutions_rivile_routes_rivile_products_create",
+          "interactivesolutions_rivile_routes_rivile_products_update",
+          "interactivesolutions_rivile_routes_rivile_products_delete",
+          "interactivesolutions_rivile_routes_rivile_products_force_delete"
+        ]
+      },
+      {
+        "name": "admin.routes.rivile.payments",
+        "controller": "InteractiveSolutions\\Rivile\\Http\\Controllers\\Rivile\\HCRivilePaymentsController",
+        "actions": [
+          "interactivesolutions_rivile_routes_rivile_payments_list",
+          "interactivesolutions_rivile_routes_rivile_payments_create",
+          "interactivesolutions_rivile_routes_rivile_payments_update",
+          "interactivesolutions_rivile_routes_rivile_payments_delete",
+          "interactivesolutions_rivile_routes_rivile_payments_force_delete"
+        ]
+      },
+      {
+        "name": "admin.routes.rivile.dept",
+        "controller": "InteractiveSolutions\\Rivile\\Http\\Controllers\\Rivile\\HCRivileDeptController",
+        "actions": [
+          "interactivesolutions_rivile_routes_rivile_dept_list",
+          "interactivesolutions_rivile_routes_rivile_dept_create",
+          "interactivesolutions_rivile_routes_rivile_dept_update",
+          "interactivesolutions_rivile_routes_rivile_dept_delete",
+          "interactivesolutions_rivile_routes_rivile_dept_force_delete"
+        ]
+      }
+    ],
+    "rolesActions": {
+      "project-admin": [
+        "interactivesolutions_rivile_routes_rivile_clients_list",
+        "interactivesolutions_rivile_routes_rivile_clients_create",
+        "interactivesolutions_rivile_routes_rivile_clients_update",
+        "interactivesolutions_rivile_routes_rivile_clients_delete",
+        "interactivesolutions_rivile_routes_rivile_products_list",
+        "interactivesolutions_rivile_routes_rivile_products_create",
+        "interactivesolutions_rivile_routes_rivile_products_update",
+        "interactivesolutions_rivile_routes_rivile_products_delete",
+        "interactivesolutions_rivile_routes_rivile_payments_list",
+        "interactivesolutions_rivile_routes_rivile_payments_create",
+        "interactivesolutions_rivile_routes_rivile_payments_update",
+        "interactivesolutions_rivile_routes_rivile_payments_delete",
+        "interactivesolutions_rivile_routes_rivile_dept_list",
+        "interactivesolutions_rivile_routes_rivile_dept_create",
+        "interactivesolutions_rivile_routes_rivile_dept_update",
+        "interactivesolutions_rivile_routes_rivile_dept_delete"
+      ]
+    }
+  }
 }
