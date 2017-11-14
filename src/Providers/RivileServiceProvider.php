@@ -2,6 +2,7 @@
 
 namespace InteractiveSolutions\Rivile\Providers;
 
+use Illuminate\Routing\Router;
 use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 use InteractiveSolutions\Rivile\Console\Commands\Export\ExportClient;
 use InteractiveSolutions\Rivile\Console\Commands\GetClients;
