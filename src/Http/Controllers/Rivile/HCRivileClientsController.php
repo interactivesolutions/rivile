@@ -2,6 +2,7 @@
 
 namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 
+use Artisan;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
@@ -102,7 +103,7 @@ class HCRivileClientsController extends HCBaseController
 
         $record = N08Klij::create(array_get($data, 'record'));
 
-        \Artisan::call('rivile:export-client', ['action' => 'new', 'id' => $record->id]);
+        Artisan::call('rivile:export-client', ['action' => 'new', 'id' => $record->id]);
 
         return $this->apiShow($record->id);
     }
