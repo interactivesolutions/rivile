@@ -1,13 +1,86 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
+/**
+ * InteractiveSolutions\Rivile\Models\I17Vpro
+ *
+ * @property int $count
+ * @property string $id
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property Carbon|null $deleted_at
+ * @property string|null $I17_KODAS_IS Padalinio kodas
+ * @property string|null $I17_KODAS_PS Prekės kodas
+ * @property string|null $I17_KODAS_OS Objekto kodas
+ * @property string|null $I17_SERIJA Serija
+ * @property string|null $I17_KODAS_US_A Alternatyvaus matavimo vieneto kodas
+ * @property string|null $I17_KODAS_US Pagrindinis matavimo vieneto kodas
+ * @property int|null $I17_FRAKCIJA Pagrindinio matavimo vieneto frakcija
+ * @property int|null $I17_KIEKIS FIFO likutis
+ * @property int|null $I17_ATIDUOTA Atiduota
+ * @property int|null $I17_REZERVAS Užrezervuota
+ * @property int|null $I17_PARD_UZS Pirkėjų užsakymai
+ * @property int|null $I17_PIRK_UZS Užsakyta pas tiekėjus
+ * @property float|null $I17_SUMA FIFO likučių suma
+ * @property float|null $I17_P_PIR_K Paskutinio pirkimo kaina
+ * @property string|null $I17_P_PIR_D Paskutinio pirkimo data
+ * @property float|null $I17_P_PAR_K Paskutinio pardavimo suma
+ * @property string|null $I17_P_PAR_D Paskutinio pardavimo data
+ * @property int|null $I17_VID_UZS Užsakymas iš vidinio padalinio
+ * @property int|null $I17_REIKALAVIMAS Pareikalavimas iš vidinio padalinio
+ * @property int|null $I17_KELYJE Prekės kelyje
+ * @property float|null $I17_KAINA Pardavimo kaina objekte
+ * @property string|null $I17_USERIS Kas koregavo
+ * @property string|null $I17_ADDUSR Kas sukūrė
+ * @property string|null $I17_R_DATE Kada koregavo
+ * @method static Builder|I17Vpro whereCount($value)
+ * @method static Builder|I17Vpro whereCreatedAt($value)
+ * @method static Builder|I17Vpro whereDeletedAt($value)
+ * @method static Builder|I17Vpro whereI17ADDUSR($value)
+ * @method static Builder|I17Vpro whereI17ATIDUOTA($value)
+ * @method static Builder|I17Vpro whereI17FRAKCIJA($value)
+ * @method static Builder|I17Vpro whereI17KAINA($value)
+ * @method static Builder|I17Vpro whereI17KELYJE($value)
+ * @method static Builder|I17Vpro whereI17KIEKIS($value)
+ * @method static Builder|I17Vpro whereI17KODASIS($value)
+ * @method static Builder|I17Vpro whereI17KODASOS($value)
+ * @method static Builder|I17Vpro whereI17KODASPS($value)
+ * @method static Builder|I17Vpro whereI17KODASUS($value)
+ * @method static Builder|I17Vpro whereI17KODASUSA($value)
+ * @method static Builder|I17Vpro whereI17PARDUZS($value)
+ * @method static Builder|I17Vpro whereI17PIRKUZS($value)
+ * @method static Builder|I17Vpro whereI17PPARD($value)
+ * @method static Builder|I17Vpro whereI17PPARK($value)
+ * @method static Builder|I17Vpro whereI17PPIRD($value)
+ * @method static Builder|I17Vpro whereI17PPIRK($value)
+ * @method static Builder|I17Vpro whereI17RDATE($value)
+ * @method static Builder|I17Vpro whereI17REIKALAVIMAS($value)
+ * @method static Builder|I17Vpro whereI17REZERVAS($value)
+ * @method static Builder|I17Vpro whereI17SERIJA($value)
+ * @method static Builder|I17Vpro whereI17SUMA($value)
+ * @method static Builder|I17Vpro whereI17USERIS($value)
+ * @method static Builder|I17Vpro whereI17VIDUZS($value)
+ * @method static Builder|I17Vpro whereId($value)
+ * @method static Builder|I17Vpro whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class I17Vpro extends HCUuidModel
 {
+    /**
+     * @var string
+     */
     protected $table = 'I17_VPRO';
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'id',
         'I17_KODAS_IS',
