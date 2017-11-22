@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -7,14 +9,27 @@ use DB;
 use SimpleXMLElement;
 use SoapClient;
 
+/**
+ * Class RivileCore
+ * @package InteractiveSolutions\Rivile\Console\Commands
+ */
 class RivileCore extends Command
 {
     /**
-     * Action list
+     * Get action
      */
     const ACTION_METHOD_GET = 'GET';
+    /**
+     * New action
+     */
     const ACTION_METHOD_NEW = 'NEW';
+    /**
+     * Update action
+     */
     const ACTION_METHOD_UPDATE = 'UPDATE';
+    /**
+     * Delete action
+     */
     const ACTION_METHOD_DELETE = 'DELETE';
     /**
      * The name and signature of the console command.
@@ -85,7 +100,6 @@ class RivileCore extends Command
     /**
      * Execute the console command
      *
-     * @return mixed
      * @throws \Exception
      */
     public function handle()
@@ -127,6 +141,9 @@ class RivileCore extends Command
         }
     }
 
+    /**
+     * @throws \Exception
+     */
     protected function makeCall()
     {
         $soapClient = new SoapClient($this->url);
@@ -161,20 +178,28 @@ class RivileCore extends Command
         }
     }
 
+    /**
+     * @param array $response
+     * @throws \Exception
+     */
     protected function _handleResponse(array $response)
     {
         DB::beginTransaction();
 
         try {
             $this->handleResponse($response);
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
             DB::rollback();
-            throw new \Exception($e);
+            throw $exception;
         }
 
         DB::commit();
     }
 
+    /**
+     * @param array $response
+     * @throws \Exception
+     */
     protected function handleResponse(array $response)
     {
         if (isset($response['error'])) {
@@ -182,12 +207,16 @@ class RivileCore extends Command
         }
     }
 
+    /**
+     * @param $response
+     * @return array|mixed
+     * @throws \Exception
+     */
     private function xmlToArray($response)
     {
         $response = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $response);
         $response = preg_replace('#&(?=[a-z_0-9]+=)#', '&amp;', $response);
 
-        //$response = file_get_contents('data.xml');
         $response = str_replace('&#x1A;', '', $response);
 
         $xml = new SimpleXMLElement($response);
@@ -195,6 +224,10 @@ class RivileCore extends Command
 
         if (isset($array['ERROR'])) {
             $message = '';
+
+            if (!is_array($array['ERROR'])) {
+                $array['ERROR'] = [$array['ERROR']];
+            }
 
             foreach ($array['ERROR'] as $key => $error) {
                 $message .= $key . ' ' . $error;
@@ -209,6 +242,10 @@ class RivileCore extends Command
         return $array;
     }
 
+    /**
+     * @param array $array
+     * @return array
+     */
     private function clearArrayFromEmptyArrays(array $array)
     {
         foreach ($array as &$item) {
@@ -224,6 +261,9 @@ class RivileCore extends Command
         return $array;
     }
 
+    /**
+     * @return string
+     */
     private function getAction()
     {
         switch ($this->actionMethod) {
@@ -272,11 +312,18 @@ class RivileCore extends Command
         return $xml;
     }
 
+    /**
+     * @param array $list
+     */
     protected function clearEmptySpaces(array &$list)
     {
         foreach ($list as &$string) {
-            while ($string[strlen($string) - 1] == ' ') {
-                $string = substr($string, 0, -1);
+            if (is_array($string)) {
+                $this->clearEmptySpaces($string);
+            } else {
+                while ($string[strlen($string) - 1] == ' ') {
+                    $string = substr($string, 0, -1);
+                }
             }
         }
     }

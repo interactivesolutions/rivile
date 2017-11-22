@@ -1,14 +1,19 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 
-use Artisan;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileClientsValidator;
 use InteractiveSolutions\Rivile\Models\N08Klij;
 
+/**
+ * Class HCRivileClientsController
+ * @package InteractiveSolutions\Rivile\Http\Controllers\Rivile
+ */
 class HCRivileClientsController extends HCBaseController
 {
     /**
@@ -53,7 +58,7 @@ class HCRivileClientsController extends HCBaseController
      *
      * @return array
      */
-    public function getAdminListHeader()
+    public function getAdminListHeader(): array
     {
         return [
             'N08_PVM_KODAS' => [
@@ -85,7 +90,7 @@ class HCRivileClientsController extends HCBaseController
      *
      * @return array
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         $filters = [];
 
@@ -103,7 +108,7 @@ class HCRivileClientsController extends HCBaseController
 
         $record = N08Klij::create(array_get($data, 'record'));
 
-        Artisan::call('rivile:export-client', ['action' => 'new', 'id' => $record->id]);
+        \Artisan::call('rivile:export-client', ['action' => 'new', 'id' => $record->id]);
 
         return $this->apiShow($record->id);
     }
