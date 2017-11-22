@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Providers;
 
 use Illuminate\Routing\Router;
@@ -15,7 +17,12 @@ use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateClients;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdatePayments;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateProducts;
+use InteractiveSolutions\Rivile\Repositories\N17ProdRepository;
 
+/**
+ * Class RivileServiceProvider
+ * @package InteractiveSolutions\Rivile\Providers
+ */
 class RivileServiceProvider extends HCBaseServiceProvider
 {
     /**
@@ -53,6 +60,16 @@ class RivileServiceProvider extends HCBaseServiceProvider
      * @var string
      */
     protected $namespace = 'InteractiveSolutions\Rivile\Http\Controllers';
+
+    /**
+     *
+     */
+    public function register()
+    {
+        parent::register();
+
+        $this->registerRepositories();
+    }
 
     /**
      * @param Router $router
@@ -109,6 +126,14 @@ class RivileServiceProvider extends HCBaseServiceProvider
     private function modulePath(string $path): string
     {
         return __DIR__ . '/../' . $path;
+    }
+
+    /**
+     *
+     */
+    private function registerRepositories(): void
+    {
+        $this->app->singleton(N17ProdRepository::class);
     }
 }
 
