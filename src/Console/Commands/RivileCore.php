@@ -320,10 +320,8 @@ class RivileCore extends Command
         foreach ($list as &$string) {
             if (is_array($string)) {
                 $this->clearEmptySpaces($string);
-            } else {
-                while ($string[strlen($string) - 1] == ' ') {
-                    $string = substr($string, 0, -1);
-                }
+            } elseif (!is_null($string)) {
+               $string = trim($string);
             }
         }
     }
