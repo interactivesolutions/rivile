@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
+use InteractiveSolutions\Rivile\Events\ProductsUpdateEvent;
 use InteractiveSolutions\Rivile\Models\I33Pkai;
 use InteractiveSolutions\Rivile\Models\N17Prod;
 use InteractiveSolutions\Rivile\Models\N37Pmat;
@@ -68,6 +69,7 @@ class UpdateProducts extends RivileCore
     protected function handleResponse(array $response)
     {
         $lastItem = null;
+        $productsIds = [];
 
         if (!$response) {
             return;
@@ -82,9 +84,13 @@ class UpdateProducts extends RivileCore
             $this->clearEmptySpaces($item);
             N17Prod::updateOrCreate(['N17_KODAS_PS' => $item['N17_KODAS_PS']], $item);
 
+            $productsIds[] = array_get($item, 'N17_KODAS_PS');
+
             $this->saveI33(array_get($item, 'I33'));
             $this->saveN37(array_get($item, 'N37'));
         }
+
+        event(new ProductsUpdateEvent($productsIds));
 
         $this->info('Updated / added: ' . sizeof($response));
 

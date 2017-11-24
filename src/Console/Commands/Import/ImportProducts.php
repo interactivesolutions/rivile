@@ -52,6 +52,7 @@ class ImportProducts extends RivileCore
     {
         $lastItem = null;
         $productsIds = [];
+
         if (!isset($response[0])) {
             $response = [$response];
         }
