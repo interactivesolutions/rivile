@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Console\Commands;
 
-use Illuminate\Console\Command;
 use DB;
+use Illuminate\Console\Command;
 use SimpleXMLElement;
 use SoapClient;
 
@@ -321,7 +321,7 @@ class RivileCore extends Command
             if (is_array($string)) {
                 $this->clearEmptySpaces($string);
             } elseif (!is_null($string)) {
-               $string = trim($string);
+                $string = trim($string);
             }
         }
     }
