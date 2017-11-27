@@ -18,6 +18,7 @@ use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateClients;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdatePayments;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateProducts;
 use InteractiveSolutions\Rivile\Repositories\N17ProdRepository;
+use InteractiveSolutions\Rivile\Repositories\N37PmatRepository;
 
 /**
  * Class RivileServiceProvider
@@ -134,6 +135,7 @@ class RivileServiceProvider extends HCBaseServiceProvider
     private function registerRepositories(): void
     {
         $this->app->singleton(N17ProdRepository::class);
+        $this->app->singleton(N37PmatRepository::class);
     }
 }
 
