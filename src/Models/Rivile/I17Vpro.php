@@ -40,6 +40,8 @@ use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
  * @property string|null $I17_USERIS Kas koregavo
  * @property string|null $I17_ADDUSR Kas sukūrė
  * @property string|null $I17_R_DATE Kada koregavo
+ * @property float|null $likutis_us Dešimtainis kiekis pagrindiniu matavimo vientetu
+ * @property float|null $likutis_us_a Dešimtainis kiekis alternatyviu matavimo vienetu
  * @method static Builder|I17Vpro whereCount($value)
  * @method static Builder|I17Vpro whereCreatedAt($value)
  * @method static Builder|I17Vpro whereDeletedAt($value)
@@ -68,6 +70,8 @@ use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
  * @method static Builder|I17Vpro whereI17USERIS($value)
  * @method static Builder|I17Vpro whereI17VIDUZS($value)
  * @method static Builder|I17Vpro whereId($value)
+ * @method static Builder|I17Vpro whereLikutisUs($value)
+ * @method static Builder|I17Vpro whereLikutisUsA($value)
  * @method static Builder|I17Vpro whereUpdatedAt($value)
  * @mixin \Eloquent
  */
@@ -107,6 +111,8 @@ class I17Vpro extends HCUuidModel
         'I17_USERIS',
         'I17_ADDUSR',
         'I17_R_DATE',
+        'likutis_us',
+        'likutis_us_a',
     ];
 
 }
