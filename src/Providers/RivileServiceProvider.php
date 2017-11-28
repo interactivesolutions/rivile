@@ -8,15 +8,19 @@ use Illuminate\Routing\Router;
 use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 use InteractiveSolutions\Rivile\Console\Commands\Export\ExportClient;
 use InteractiveSolutions\Rivile\Console\Commands\GetClients;
+use InteractiveSolutions\Rivile\Console\Commands\GetInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\GetPayments;
 use InteractiveSolutions\Rivile\Console\Commands\GetProducts;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportClients;
+use InteractiveSolutions\Rivile\Console\Commands\Import\ImportInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportPayments;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportProducts;
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateClients;
+use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdatePayments;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateProducts;
+use InteractiveSolutions\Rivile\Repositories\I17VproRepository;
 use InteractiveSolutions\Rivile\Repositories\N17ProdRepository;
 use InteractiveSolutions\Rivile\Repositories\N37PmatRepository;
 
@@ -43,14 +47,17 @@ class RivileServiceProvider extends HCBaseServiceProvider
         RivileCore::class,
 
         GetClients::class,
+        GetInternalGoods::class,
         GetProducts::class,
         GetPayments::class,
 
         ImportClients::class,
+        ImportInternalGoods::class,
         ImportProducts::class,
         ImportPayments::class,
 
         UpdateClients::class,
+        UpdateInternalGoods::class,
         UpdateProducts::class,
         UpdatePayments::class,
 
@@ -134,6 +141,7 @@ class RivileServiceProvider extends HCBaseServiceProvider
      */
     private function registerRepositories(): void
     {
+        $this->app->singleton(I17VproRepository::class);
         $this->app->singleton(N17ProdRepository::class);
         $this->app->singleton(N37PmatRepository::class);
     }
