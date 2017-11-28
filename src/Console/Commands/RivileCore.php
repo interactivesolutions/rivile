@@ -151,14 +151,30 @@ class RivileCore extends Command
         switch ($this->actionMethod) {
             case self::ACTION_METHOD_GET :
 
-                if ($this->listType && $this->filters) {
-                    $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}($this->key,
-                        $this->listType, $this->filters)));
-                } elseif ($this->listType) {
-                    $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}($this->key,
-                        $this->listType)));
-                } else {
-                    $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}($this->key)));
+                switch ($this->getAction()) {
+                    case 'GET_I17_LIST':
+                        $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}(
+                            $this->key,
+                            $this->filters
+                        )));
+                        break;
+
+                    default:
+                        if ($this->listType && $this->filters) {
+                            $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}(
+                                $this->key,
+                                $this->listType,
+                                $this->filters
+                            )));
+                        } elseif ($this->listType) {
+                            $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}(
+                                $this->key,
+                                $this->listType
+                            )));
+                        } else {
+                            $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}($this->key)));
+                        }
+                        break;
                 }
 
                 break;
