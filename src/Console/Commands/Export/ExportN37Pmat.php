@@ -4,68 +4,69 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Console\Commands\Export;
 
+
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
-use InteractiveSolutions\Rivile\Repositories\N08KlijRepository;
+use InteractiveSolutions\Rivile\Repositories\N37PmatRepository;
 
 /**
- * Class ExportClient
+ * Class ExportN37Pmat
  * @package InteractiveSolutions\Rivile\Console\Commands\Export
  */
-class ExportClient extends RivileCore
+class ExportN37Pmat extends RivileCore
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'rivile:export-client {action} {id}';
+    protected $signature = 'rivile:export-n37pmat {action} {id}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'EDIT_N08 - Export';
+    protected $description = 'EDIT_N37 - Export';
 
     /**
-     * @var N08KlijRepository
+     * @var N37PmatRepository
      */
-    private $n08KlijRepository;
+    private $n37PmatRepository;
 
     /**
-     * ExportClient constructor.
-     * @param N08KlijRepository $n08KlijRepository
+     * ExportN37Pmat constructor.
+     * @param N37PmatRepository $n37PmatRepository
      */
-    public function __construct(N08KlijRepository $n08KlijRepository)
+    public function __construct(N37PmatRepository $n37PmatRepository)
     {
         parent::__construct();
 
-        $this->n08KlijRepository = $n08KlijRepository;
+        $this->n37PmatRepository = $n37PmatRepository;
     }
 
     /**
      * Initializing data
-     *
+
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function init()
     {
-        $this->action = 'N08';
+        $this->action = 'N37';
 
         switch ($this->argument('action')) {
-            case "new":
+            case 'new':
 
                 $this->operation = 'I';
                 $this->actionMethod = self::ACTION_METHOD_NEW;
                 break;
 
-            case "update":
+            case 'update':
 
                 $this->operation = 'U';
                 $this->actionMethod = self::ACTION_METHOD_UPDATE;
                 break;
         }
 
-        $this->data = $this->n08KlijRepository->find($this->argument('id'))->toArray();
+        $this->data = $this->n37PmatRepository->find($this->argument('id'))->toArray();
     }
 }

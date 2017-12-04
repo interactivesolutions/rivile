@@ -188,8 +188,11 @@ class RivileCore extends Command
 
                 $xml = $this->array2xml($this->data, $this->action, true);
 
-                $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}($this->key, $this->operation,
-                    $xml)));
+                $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}(
+                    $this->key,
+                    $this->operation,
+                    $xml
+                )));
                 break;
         }
     }
@@ -297,12 +300,12 @@ class RivileCore extends Command
 
     /**
      * Function returns XML string for input associative array.
-     * @param Array $array Input associative array
-     * @param String $wrap Wrapping tag
-     * @param Boolean $upper To set tags in uppercase
+     * @param array $array Input associative array
+     * @param string $wrap Wrapping tag
+     * @param bool $upper To set tags in uppercase
      * @return string
      */
-    function array2xml($array, $wrap = 'ROW0', $upper = true)
+    function array2xml(array $array, string $wrap = 'ROW0', bool $upper = true)
     {
         // set initial value for XML string
         $xml = '';

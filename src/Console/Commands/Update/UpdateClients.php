@@ -3,6 +3,7 @@
 namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
+use InteractiveSolutions\Rivile\Events\ClientsUpdateEvent;
 use InteractiveSolutions\Rivile\Models\N08Klij;
 
 class UpdateClients extends RivileCore
@@ -42,6 +43,7 @@ class UpdateClients extends RivileCore
     protected function handleResponse(array $response)
     {
         $lastItem = null;
+        $n08Ids = [];
 
         if (!isset($response[0])) {
             $response = [$response];
@@ -50,8 +52,13 @@ class UpdateClients extends RivileCore
         foreach ($response as $item) {
             $lastItem = $item;
             $this->clearEmptySpaces($item);
-            N08Klij::updateOrCreate(['N08_KODAS_KS' => $item['N08_KODAS_KS']], $item);
+
+            /** @var N08Klij $client */
+            $client = N08Klij::updateOrCreate(['N08_KODAS_KS' => $item['N08_KODAS_KS']], $item);
+            $n08Ids[] = $client->id;
         }
+
+        event(new ClientsUpdateEvent($n08Ids));
 
         $this->info('Updated / added: ' . sizeof($response));
 
