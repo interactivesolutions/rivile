@@ -250,7 +250,7 @@ class N17Prod extends HCUuidModel
         'N17_PAVU',
         'N17_KODAS_KS',
         'N17_KOD_T',
-        'N17_KODAS_KS',
+        'N17_KODAS_KS1',
         'N17_KOD_T1',
         'N17_KODAS_KS2',
         'N17_KOD_T2',
