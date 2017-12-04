@@ -7,6 +7,8 @@ namespace InteractiveSolutions\Rivile\Providers;
 use Illuminate\Routing\Router;
 use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 use InteractiveSolutions\Rivile\Console\Commands\Export\ExportClient;
+use InteractiveSolutions\Rivile\Console\Commands\Export\ExportN37Pmat;
+use InteractiveSolutions\Rivile\Console\Commands\Export\ExportProduct;
 use InteractiveSolutions\Rivile\Console\Commands\GetClients;
 use InteractiveSolutions\Rivile\Console\Commands\GetInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\GetPayments;
@@ -21,6 +23,7 @@ use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdatePayments;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateProducts;
 use InteractiveSolutions\Rivile\Repositories\I17VproRepository;
+use InteractiveSolutions\Rivile\Repositories\N08KlijRepository;
 use InteractiveSolutions\Rivile\Repositories\N17ProdRepository;
 use InteractiveSolutions\Rivile\Repositories\N37PmatRepository;
 
@@ -62,6 +65,8 @@ class RivileServiceProvider extends HCBaseServiceProvider
         UpdatePayments::class,
 
         ExportClient::class,
+        ExportProduct::class,
+        ExportN37Pmat::class,
     ];
 
     /**
@@ -142,6 +147,7 @@ class RivileServiceProvider extends HCBaseServiceProvider
     private function registerRepositories(): void
     {
         $this->app->singleton(I17VproRepository::class);
+        $this->app->singleton(N08KlijRepository::class);
         $this->app->singleton(N17ProdRepository::class);
         $this->app->singleton(N37PmatRepository::class);
     }
