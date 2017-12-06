@@ -7,6 +7,7 @@ namespace InteractiveSolutions\Rivile\Console\Commands\Import;
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Events\ClientsImportEvent;
 use InteractiveSolutions\Rivile\Models\N08Klij;
+use InteractiveSolutions\Rivile\Repositories\N08KlijRepository;
 
 /**
  * Class ImportClients
@@ -29,12 +30,29 @@ class ImportClients extends RivileCore
     protected $description = 'GET_N08_LIST - Import';
 
     /**
+     * @var N08KlijRepository
+     */
+    private $n08KlijRepository;
+
+    /**
+     * ImportClients constructor.
+     * @param N08KlijRepository $n08KlijRepository
+     */
+    public function __construct(N08KlijRepository $n08KlijRepository)
+    {
+        $this->n08KlijRepository = $n08KlijRepository;
+
+        parent::__construct();
+    }
+
+    /**
      * Initializing data
      */
     protected function init()
     {
-        $latItem = N08Klij::orderBy('created_at', 'desc')->first();
+        $latItem = null;
 
+        // todo: refactor to listType = A
         $this->listType = 'H';
         $this->filters = "N08_KODAS_KS>'$latItem'";
         $this->action = 'N08';
@@ -48,6 +66,9 @@ class ImportClients extends RivileCore
      */
     protected function handleResponse(array $response)
     {
+        // todo: remove before life run and check by POZ_DATE!!!
+        $ignoreCompanyCodes = $this->getIgnoreList();
+
         $lastItem = null;
         $n08Ids = [];
 
@@ -55,8 +76,18 @@ class ImportClients extends RivileCore
             $lastItem = $item;
             $this->clearEmptySpaces($item);
 
+            if (in_array($item['N08_IM_KODAS'], $ignoreCompanyCodes)) {
+                continue;
+            }
+
             /** @var N08Klij $client */
-            $client = N08Klij::updateOrCreate(['N08_KODAS_KS' => $item['N08_KODAS_KS']], $item);
+            $client = $this->n08KlijRepository->updateOrCreate(
+                ['N08_KODAS_KS' => $item['N08_KODAS_KS']],
+                $item
+            );
+
+            // todo: save N33
+
             $n08Ids[] = $client->id;
         }
 
@@ -69,4 +100,13 @@ class ImportClients extends RivileCore
             $this->makeCall();
         }
     }
+
+    private function getIgnoreList(): array
+    {
+        return [
+            '25513443',
+        ];
+    }
+
+
 }
