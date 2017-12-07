@@ -6,10 +6,10 @@ namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Events\ProductsUpdateEvent;
-use InteractiveSolutions\Rivile\Models\I33Pkai;
 use InteractiveSolutions\Rivile\Models\N17Prod;
-use InteractiveSolutions\Rivile\Models\N37Pmat;
+use InteractiveSolutions\Rivile\Repositories\I33PkaiRepository;
 use InteractiveSolutions\Rivile\Repositories\N17ProdRepository;
+use InteractiveSolutions\Rivile\Repositories\N37PmatRepository;
 
 /**
  * Class UpdateProducts
@@ -21,6 +21,14 @@ class UpdateProducts extends RivileCore
      * @var N17ProdRepository
      */
     private $n17ProdRepository;
+    /**
+     * @var I33PkaiRepository
+     */
+    private $i33PkaiRepository;
+    /**
+     * @var N37PmatRepository
+     */
+    private $n37PmatRepository;
 
     /**
      * The name and signature of the console command.
@@ -39,20 +47,29 @@ class UpdateProducts extends RivileCore
     /**
      * UpdateProducts constructor.
      * @param N17ProdRepository $n17ProdRepository
+     * @param I33PkaiRepository $i33PkaiRepository
+     * @param N37PmatRepository $n37PmatRepository
      */
-    public function __construct(N17ProdRepository $n17ProdRepository)
-    {
-        parent::__construct();
-
+    public function __construct(
+        N17ProdRepository $n17ProdRepository,
+        I33PkaiRepository $i33PkaiRepository,
+        N37PmatRepository $n37PmatRepository
+    ) {
         $this->n17ProdRepository = $n17ProdRepository;
+        $this->i33PkaiRepository = $i33PkaiRepository;
+        $this->n37PmatRepository = $n37PmatRepository;
+
+        parent::__construct();
     }
 
     /**
      * Initializing data
+     *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function init()
     {
-        $latItem = N17Prod::orderBy('N17_R_DATE', 'desc')->get()[0]->N17_R_DATE;
+        $latItem = $this->n17ProdRepository->getLastRDate();
 
         $this->listType = 'A';
         $this->filters = "N17_R_DATE>'$latItem'";
@@ -82,9 +99,11 @@ class UpdateProducts extends RivileCore
         foreach ($response as $item) {
             $lastItem = $item;
             $this->clearEmptySpaces($item);
-            N17Prod::updateOrCreate(['N17_KODAS_PS' => $item['N17_KODAS_PS']], $item);
 
-            $productsIds[] = array_get($item, 'N17_KODAS_PS');
+            /** @var N17Prod $product */
+            $product = $this->n17ProdRepository->updateOrCreate(['N17_KODAS_PS' => $item['N17_KODAS_PS']], $item);
+
+            $productsIds[] = $product->id;
 
             $this->saveI33(array_get($item, 'I33'));
             $this->saveN37(array_get($item, 'N37'));
@@ -102,6 +121,7 @@ class UpdateProducts extends RivileCore
 
     /**
      * @param array|null $data
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     private function saveI33(array $data = null)
     {
@@ -114,7 +134,7 @@ class UpdateProducts extends RivileCore
         }
 
         foreach ($data as $key => $item) {
-            I33Pkai::updateOrCreate([
+            $this->i33PkaiRepository->updateOrCreate([
                 'I33_KODAS_PS' => $item['I33_KODAS_PS'],
                 'I33_KODAS_IS' => $item['I33_KODAS_IS'],
                 'I33_KODAS_US' => $item['I33_KODAS_US'],
@@ -124,6 +144,7 @@ class UpdateProducts extends RivileCore
 
     /**
      * @param array|null $data
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     private function saveN37(array $data = null)
     {
@@ -136,7 +157,7 @@ class UpdateProducts extends RivileCore
         }
 
         foreach ($data as $key => $item) {
-            N37Pmat::updateOrCreate([
+            $this->n37PmatRepository->updateOrCreate([
                 'N37_KODAS_PS' => $item['N37_KODAS_PS'],
                 'N37_KODAS_US' => $item['N37_KODAS_US'],
                 'N37_BAR_KODAS' => $item['N37_BAR_KODAS'],

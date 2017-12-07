@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Events\ClientsUpdateEvent;
 use InteractiveSolutions\Rivile\Models\N08Klij;
+use InteractiveSolutions\Rivile\Repositories\N08KlijRepository;
+use InteractiveSolutions\Rivile\Repositories\N33KbanRepository;
 
 class UpdateClients extends RivileCore
 {
@@ -23,13 +27,35 @@ class UpdateClients extends RivileCore
     protected $description = 'GET_N08_LIST - Update clients list';
 
     /**
+     * @var N08KlijRepository
+     */
+    private $n08KlijRepository;
+    /**
+     * @var N33KbanRepository
+     */
+    private $n33KbanRepository;
+
+    /**
+     * ImportClients constructor.
+     * @param N08KlijRepository $n08KlijRepository
+     * @param N33KbanRepository $n33KbanRepository
+     */
+    public function __construct(N08KlijRepository $n08KlijRepository, N33KbanRepository $n33KbanRepository)
+    {
+        $this->n08KlijRepository = $n08KlijRepository;
+        $this->n33KbanRepository = $n33KbanRepository;
+
+        parent::__construct();
+    }
+
+    /**
      * Initializing data
      */
     protected function init()
     {
         $latItem = N08Klij::orderBy('N08_R_DATE', 'desc')->get()[1]->N08_R_DATE;
 
-        $this->listType = 'H';
+        $this->listType = 'A';
         $this->filters = "N08_R_DATE>'$latItem'";
         $this->action = 'N08';
         $this->xmlRootName = 'N08';
@@ -54,7 +80,13 @@ class UpdateClients extends RivileCore
             $this->clearEmptySpaces($item);
 
             /** @var N08Klij $client */
-            $client = N08Klij::updateOrCreate(['N08_KODAS_KS' => $item['N08_KODAS_KS']], $item);
+            $client = $this->n08KlijRepository->updateOrCreate(
+                ['N08_KODAS_KS' => $item['N08_KODAS_KS']],
+                $item
+            );
+
+            $this->saveN33(array_get($item, 'N33'));
+
             $n08Ids[] = $client->id;
         }
 
@@ -65,6 +97,28 @@ class UpdateClients extends RivileCore
         if (sizeof($response) == 100) {
             $this->filters = "N08_R_DATE>'" . $lastItem['N08_R_DATE'] . "'";
             $this->makeCall();
+        }
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    private function saveN33(array $data = null): void
+    {
+        if (!$data) {
+            return;
+        }
+
+        if (!isset($data[0])) {
+            $data = [$data];
+        }
+
+        foreach ($data as $item) {
+            $this->n33KbanRepository->updateOrCreate([
+                'N33_KODAS_KS' => $item['N33_KODAS_KS'],
+                'N33_EIL_NR' => $item['N33_EIL_NR'],
+            ], $item);
         }
     }
 }

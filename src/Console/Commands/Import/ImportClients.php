@@ -8,6 +8,7 @@ use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Events\ClientsImportEvent;
 use InteractiveSolutions\Rivile\Models\N08Klij;
 use InteractiveSolutions\Rivile\Repositories\N08KlijRepository;
+use InteractiveSolutions\Rivile\Repositories\N33KbanRepository;
 
 /**
  * Class ImportClients
@@ -33,14 +34,20 @@ class ImportClients extends RivileCore
      * @var N08KlijRepository
      */
     private $n08KlijRepository;
+    /**
+     * @var N33KbanRepository
+     */
+    private $n33KbanRepository;
 
     /**
      * ImportClients constructor.
      * @param N08KlijRepository $n08KlijRepository
+     * @param N33KbanRepository $n33KbanRepository
      */
-    public function __construct(N08KlijRepository $n08KlijRepository)
+    public function __construct(N08KlijRepository $n08KlijRepository, N33KbanRepository $n33KbanRepository)
     {
         $this->n08KlijRepository = $n08KlijRepository;
+        $this->n33KbanRepository = $n33KbanRepository;
 
         parent::__construct();
     }
@@ -52,8 +59,7 @@ class ImportClients extends RivileCore
     {
         $latItem = null;
 
-        // todo: refactor to listType = A
-        $this->listType = 'H';
+        $this->listType = 'A';
         $this->filters = "N08_KODAS_KS>'$latItem'";
         $this->action = 'N08';
         $this->xmlRootName = 'N08';
@@ -66,9 +72,6 @@ class ImportClients extends RivileCore
      */
     protected function handleResponse(array $response)
     {
-        // todo: remove before life run and check by POZ_DATE!!!
-        $ignoreCompanyCodes = $this->getIgnoreList();
-
         $lastItem = null;
         $n08Ids = [];
 
@@ -76,17 +79,13 @@ class ImportClients extends RivileCore
             $lastItem = $item;
             $this->clearEmptySpaces($item);
 
-            if (in_array($item['N08_IM_KODAS'], $ignoreCompanyCodes)) {
-                continue;
-            }
-
             /** @var N08Klij $client */
             $client = $this->n08KlijRepository->updateOrCreate(
                 ['N08_KODAS_KS' => $item['N08_KODAS_KS']],
                 $item
             );
 
-            // todo: save N33
+            $this->saveN33(array_get($item, 'N33'));
 
             $n08Ids[] = $client->id;
         }
@@ -101,11 +100,26 @@ class ImportClients extends RivileCore
         }
     }
 
-    private function getIgnoreList(): array
+    /**
+     * @param array|null $data
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    private function saveN33(array $data = null): void
     {
-        return [
-            '25513443',
-        ];
+        if (!$data) {
+            return;
+        }
+
+        if (!isset($data[0])) {
+            $data = [$data];
+        }
+
+        foreach ($data as $item) {
+            $this->n33KbanRepository->updateOrCreate([
+                'N33_KODAS_KS' => $item['N33_KODAS_KS'],
+                'N33_EIL_NR' => $item['N33_EIL_NR'],
+            ], $item);
+        }
     }
 
 

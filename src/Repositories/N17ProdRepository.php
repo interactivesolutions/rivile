@@ -42,7 +42,7 @@ class N17ProdRepository extends Repository
     public function getProductsByIds(array $whereInIds): Collection
     {
         return $this->makeQuery()
-            ->whereIn('N17_KODAS_PS', $whereInIds)
+            ->whereIn('id', $whereInIds)
             ->get();
     }
 }
