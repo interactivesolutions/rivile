@@ -22,12 +22,30 @@ use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateClients;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdatePayments;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateProducts;
+use InteractiveSolutions\Rivile\Repositories\I04AthRepository;
+use InteractiveSolutions\Rivile\Repositories\I05AtdRepository;
+use InteractiveSolutions\Rivile\Repositories\I06ParhRepository;
+use InteractiveSolutions\Rivile\Repositories\I07PardRepository;
+use InteractiveSolutions\Rivile\Repositories\I08PartRepository;
+use InteractiveSolutions\Rivile\Repositories\I09VihRepository;
+use InteractiveSolutions\Rivile\Repositories\I10VidRepository;
+use InteractiveSolutions\Rivile\Repositories\I13PamoRepository;
 use InteractiveSolutions\Rivile\Repositories\I17VproRepository;
 use InteractiveSolutions\Rivile\Repositories\I33PkaiRepository;
+use InteractiveSolutions\Rivile\Repositories\I44SkolRepository;
+use InteractiveSolutions\Rivile\Repositories\I64LojoRepository;
 use InteractiveSolutions\Rivile\Repositories\N08KlijRepository;
+use InteractiveSolutions\Rivile\Repositories\N13AkcRepository;
 use InteractiveSolutions\Rivile\Repositories\N17ProdRepository;
+use InteractiveSolutions\Rivile\Repositories\N26KompRepository;
+use InteractiveSolutions\Rivile\Repositories\N31NuodRepository;
+use InteractiveSolutions\Rivile\Repositories\N32PabcRepository;
 use InteractiveSolutions\Rivile\Repositories\N33KbanRepository;
 use InteractiveSolutions\Rivile\Repositories\N37PmatRepository;
+use InteractiveSolutions\Rivile\Repositories\N40AbarRepository;
+use InteractiveSolutions\Rivile\Repositories\N64LojRepository;
+use InteractiveSolutions\Rivile\Repositories\N87TpreRepository;
+use InteractiveSolutions\Rivile\Repositories\T03SdocRepository;
 
 /**
  * Class RivileServiceProvider
@@ -148,12 +166,30 @@ class RivileServiceProvider extends HCBaseServiceProvider
      */
     private function registerRepositories(): void
     {
+        $this->app->singleton(I04AthRepository::class);
+        $this->app->singleton(I05AtdRepository::class);
+        $this->app->singleton(I06ParhRepository::class);
+        $this->app->singleton(I07PardRepository::class);
+        $this->app->singleton(I08PartRepository::class);
+        $this->app->singleton(I09VihRepository::class);
+        $this->app->singleton(I10VidRepository::class);
+        $this->app->singleton(I13PamoRepository::class);
         $this->app->singleton(I17VproRepository::class);
         $this->app->singleton(I33PkaiRepository::class);
+        $this->app->singleton(I44SkolRepository::class);
+        $this->app->singleton(I64LojoRepository::class);
         $this->app->singleton(N08KlijRepository::class);
+        $this->app->singleton(N13AkcRepository::class);
         $this->app->singleton(N17ProdRepository::class);
+        $this->app->singleton(N26KompRepository::class);
+        $this->app->singleton(N31NuodRepository::class);
+        $this->app->singleton(N32PabcRepository::class);
         $this->app->singleton(N33KbanRepository::class);
         $this->app->singleton(N37PmatRepository::class);
+        $this->app->singleton(N40AbarRepository::class);
+        $this->app->singleton(N64LojRepository::class);
+        $this->app->singleton(N87TpreRepository::class);
+        $this->app->singleton(T03SdocRepository::class);
     }
 }
 
