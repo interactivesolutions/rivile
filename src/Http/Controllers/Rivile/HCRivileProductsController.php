@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Artisan;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
+use InteractiveSolutions\Rivile\Models\N17Prod;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileProductsValidator;
-use InteractiveSolutions\Rivile\Models\Rivile\HCRivileProducts;
 
 class HCRivileProductsController extends HCBaseController
 {
@@ -491,12 +491,13 @@ class HCRivileProductsController extends HCBaseController
      * Create item
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiStore()
     {
         $data = $this->getInputData();
 
-        $record = HCRivileProducts::create(array_get($data, 'record'));
+        $record = N17Prod::create(array_get($data, 'record'));
         Artisan::call('rivile:export-product', ['action' => 'new', 'id' => $record->id]);
 
         return $this->apiShow($record->id);
@@ -506,6 +507,7 @@ class HCRivileProductsController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {
@@ -635,9 +637,9 @@ class HCRivileProductsController extends HCBaseController
     {
         $with = [];
 
-        $select = HCRivileProducts::getFillableFields();
+        $select = N17Prod::getFillableFields();
 
-        $record = HCRivileProducts::with($with)
+        $record = N17Prod::with($with)
             ->select($select)
             ->where('id', $id)
             ->firstOrFail();
@@ -648,12 +650,13 @@ class HCRivileProductsController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
-        $record = HCRivileProducts::findOrFail($id);
+        $record = N17Prod::findOrFail($id);
 
         $data = $this->getInputData();
 
@@ -671,7 +674,7 @@ class HCRivileProductsController extends HCBaseController
      */
     protected function __apiUpdateStrict(string $id)
     {
-        HCRivileProducts::where('id', $id)->update(request()->all());
+        N17Prod::where('id', $id)->update(request()->all());
 
         return $this->apiShow($id);
     }
@@ -684,7 +687,7 @@ class HCRivileProductsController extends HCBaseController
      */
     protected function __apiDestroy(array $list)
     {
-        HCRivileProducts::destroy($list);
+        N17Prod::destroy($list);
 
         return hcSuccess();
     }
@@ -697,7 +700,7 @@ class HCRivileProductsController extends HCBaseController
      */
     protected function __apiForceDelete(array $list)
     {
-        HCRivileProducts::onlyTrashed()->whereIn('id', $list)->forceDelete();
+        N17Prod::onlyTrashed()->whereIn('id', $list)->forceDelete();
 
         return hcSuccess();
     }
@@ -710,7 +713,7 @@ class HCRivileProductsController extends HCBaseController
      */
     protected function __apiRestore(array $list)
     {
-        HCRivileProducts::whereIn('id', $list)->restore();
+        N17Prod::whereIn('id', $list)->restore();
 
         return hcSuccess();
     }
@@ -726,10 +729,10 @@ class HCRivileProductsController extends HCBaseController
         $with = [];
 
         if ($select == null) {
-            $select = HCRivileProducts::getFillableFields();
+            $select = N17Prod::getFillableFields();
         }
 
-        $list = HCRivileProducts::with($with)->select($select)
+        $list = N17Prod::with($with)->select($select)
             // add filters
             ->where(function($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);

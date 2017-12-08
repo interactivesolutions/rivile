@@ -5,8 +5,8 @@ namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
+use InteractiveSolutions\Rivile\Models\I44Skol;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileDeptValidator;
-use InteractiveSolutions\Rivile\Models\Rivile\HCRivileDept;
 
 class HCRivileDeptController extends HCBaseController
 {
@@ -181,12 +181,13 @@ class HCRivileDeptController extends HCBaseController
      * Create item
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiStore()
     {
         $data = $this->getInputData();
 
-        $record = HCRivileDept::create(array_get($data, 'record'));
+        $record = I44Skol::create(array_get($data, 'record'));
 
         return $this->apiShow($record->id);
     }
@@ -195,6 +196,7 @@ class HCRivileDeptController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {
@@ -250,9 +252,9 @@ class HCRivileDeptController extends HCBaseController
     {
         $with = [];
 
-        $select = HCRivileDept::getFillableFields();
+        $select = I44Skol::getFillableFields();
 
-        $record = HCRivileDept::with($with)
+        $record = I44Skol::with($with)
             ->select($select)
             ->where('id', $id)
             ->firstOrFail();
@@ -263,12 +265,13 @@ class HCRivileDeptController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
-        $record = HCRivileDept::findOrFail($id);
+        $record = I44Skol::findOrFail($id);
 
         $data = $this->getInputData();
 
@@ -285,7 +288,7 @@ class HCRivileDeptController extends HCBaseController
      */
     protected function __apiUpdateStrict(string $id)
     {
-        HCRivileDept::where('id', $id)->update(request()->all());
+        I44Skol::where('id', $id)->update(request()->all());
 
         return $this->apiShow($id);
     }
@@ -298,7 +301,7 @@ class HCRivileDeptController extends HCBaseController
      */
     protected function __apiDestroy(array $list)
     {
-        HCRivileDept::destroy($list);
+        I44Skol::destroy($list);
 
         return hcSuccess();
     }
@@ -311,7 +314,7 @@ class HCRivileDeptController extends HCBaseController
      */
     protected function __apiForceDelete(array $list)
     {
-        HCRivileDept::onlyTrashed()->whereIn('id', $list)->forceDelete();
+        I44Skol::onlyTrashed()->whereIn('id', $list)->forceDelete();
 
         return hcSuccess();
     }
@@ -324,7 +327,7 @@ class HCRivileDeptController extends HCBaseController
      */
     protected function __apiRestore(array $list)
     {
-        HCRivileDept::whereIn('id', $list)->restore();
+        I44Skol::whereIn('id', $list)->restore();
 
         return hcSuccess();
     }
@@ -340,10 +343,10 @@ class HCRivileDeptController extends HCBaseController
         $with = [];
 
         if ($select == null) {
-            $select = HCRivileDept::getFillableFields();
+            $select = I44Skol::getFillableFields();
         }
 
-        $list = HCRivileDept::with($with)->select($select)
+        $list = I44Skol::with($with)->select($select)
             // add filters
             ->where(function($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);

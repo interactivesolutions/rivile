@@ -5,8 +5,8 @@ namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
+use InteractiveSolutions\Rivile\Models\I04Ath;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivilePaymentsValidator;
-use InteractiveSolutions\Rivile\Models\Rivile\HCRivilePayments;
 
 class HCRivilePaymentsController extends HCBaseController
 {
@@ -41,10 +41,6 @@ class HCRivilePaymentsController extends HCBaseController
     public function getAdminListHeader()
     {
         return [
-            'COUNT' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.COUNT'),
-            ],
             'I04_KODAS_CH' => [
                 "type" => "text",
                 "label" => trans('Rivile::rivile_payments.I04_KODAS_CH'),
@@ -205,12 +201,13 @@ class HCRivilePaymentsController extends HCBaseController
      * Create item
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiStore()
     {
         $data = $this->getInputData();
 
-        $record = HCRivilePayments::create(array_get($data, 'record'));
+        $record = I04Ath::create(array_get($data, 'record'));
 
         return $this->apiShow($record->id);
     }
@@ -219,6 +216,7 @@ class HCRivilePaymentsController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {
@@ -280,9 +278,9 @@ class HCRivilePaymentsController extends HCBaseController
     {
         $with = [];
 
-        $select = HCRivilePayments::getFillableFields();
+        $select = I04Ath::getFillableFields();
 
-        $record = HCRivilePayments::with($with)
+        $record = I04Ath::with($with)
             ->select($select)
             ->where('id', $id)
             ->firstOrFail();
@@ -293,12 +291,13 @@ class HCRivilePaymentsController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
-        $record = HCRivilePayments::findOrFail($id);
+        $record = I04Ath::findOrFail($id);
 
         $data = $this->getInputData();
 
@@ -315,7 +314,7 @@ class HCRivilePaymentsController extends HCBaseController
      */
     protected function __apiUpdateStrict(string $id)
     {
-        HCRivilePayments::where('id', $id)->update(request()->all());
+        I04Ath::where('id', $id)->update(request()->all());
 
         return $this->apiShow($id);
     }
@@ -328,7 +327,7 @@ class HCRivilePaymentsController extends HCBaseController
      */
     protected function __apiDestroy(array $list)
     {
-        HCRivilePayments::destroy($list);
+        I04Ath::destroy($list);
 
         return hcSuccess();
     }
@@ -341,7 +340,7 @@ class HCRivilePaymentsController extends HCBaseController
      */
     protected function __apiForceDelete(array $list)
     {
-        HCRivilePayments::onlyTrashed()->whereIn('id', $list)->forceDelete();
+        I04Ath::onlyTrashed()->whereIn('id', $list)->forceDelete();
 
         return hcSuccess();
     }
@@ -354,7 +353,7 @@ class HCRivilePaymentsController extends HCBaseController
      */
     protected function __apiRestore(array $list)
     {
-        HCRivilePayments::whereIn('id', $list)->restore();
+        I04Ath::whereIn('id', $list)->restore();
 
         return hcSuccess();
     }
@@ -370,10 +369,10 @@ class HCRivilePaymentsController extends HCBaseController
         $with = [];
 
         if ($select == null) {
-            $select = HCRivilePayments::getFillableFields();
+            $select = I04Ath::getFillableFields();
         }
 
-        $list = HCRivilePayments::with($with)->select($select)
+        $list = I04Ath::with($with)->select($select)
             // add filters
             ->where(function($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
