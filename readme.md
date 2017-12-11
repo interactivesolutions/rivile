@@ -19,8 +19,7 @@ Copy the package config to your local config with the publish command:
 php artisan vendor:publish --provider="InteractiveSolutions\Rivile\Providers\RivileServiceProvider::class,"
 ```
 
-Add new parameter into .evn
+Add new parameter into .evn:
 
-```$xslt
-RIVILE_ACCESS_KEY=
-```
+- Rivile access key `RIVILE_ACCESS_KEY`.
+- Rivile id prefix `RIVILE_ID_PREFIX`, default value: `XXX`.

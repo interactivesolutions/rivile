@@ -6,13 +6,19 @@ return [
     | Rivile webservice URL
     |---------------------------------------------------------------------------
     */
-    'url' => ENV('RIVILE_WEBSERVICE_URL', 'http://manorivile.lt/WEBSERVICE_RIV_WEB/awws/webservice.awws?wsdl'),
+    'url' => env('RIVILE_WEBSERVICE_URL', 'http://manorivile.lt/WEBSERVICE_RIV_WEB/awws/webservice.awws?wsdl'),
 
     /*
     |---------------------------------------------------------------------------
     | Rivile access key
     |---------------------------------------------------------------------------
     */
-    'key' => ENV('RIVILE_ACCESS_KEY', ''),
+    'key' => env('RIVILE_ACCESS_KEY', ''),
 
+    /*
+    |---------------------------------------------------------------------------
+    | Rivile rows id prefix
+    |---------------------------------------------------------------------------
+    */
+    'rivile_id_prefix' => env('RIVILE_ID_PREFIX', 'XXX')
 ];

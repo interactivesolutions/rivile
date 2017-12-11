@@ -52,6 +52,7 @@ class ExportN37Pmat extends RivileCore
     protected function init()
     {
         $this->action = 'N37';
+        $this->xmlRootName = 'N37';
 
         switch ($this->argument('action')) {
             case 'new':

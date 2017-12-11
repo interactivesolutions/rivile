@@ -51,6 +51,7 @@ class ExportProduct extends RivileCore
     protected function init()
     {
         $this->action = 'N17';
+        $this->xmlRootName = 'N17';
 
         switch ($this->argument('action')) {
             case 'new':

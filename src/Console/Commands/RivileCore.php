@@ -128,6 +128,8 @@ class RivileCore extends Command
         $this->url = config('rivile.url');
         $this->key = config('rivile.key');
 
+        // todo: check is set $this->xmlRootName
+
         if ($this->key == '') {
             throw new \Exception('ISR-0001 : ' . trans('Rivile::errors.key_not_found'));
         }
@@ -320,7 +322,7 @@ class RivileCore extends Command
                 $key = strtoupper($key);
             }
             // append to XML string
-            $xml .= "<$key>" . htmlspecialchars(trim($value)) . "</$key>";
+            $xml .= "<$key>" . htmlspecialchars(trim((string)$value)) . "</$key>";
         }
         // close wrap TAG if needed
         if ($wrap != null) {
