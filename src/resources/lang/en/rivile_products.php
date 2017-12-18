@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types = 1);
+
 return [
     'page_title' => 'HCRivileProducts',
     'COUNT' => 'COUNT',
@@ -106,4 +109,44 @@ return [
     'N17_PAV_K2' => 'N17 PAV K2',
     'N17_PAV_K3' => 'N17 PAV K3',
 
+    'enum' => [
+        'assembly' => [
+            'simple' => '1 - Simple',
+            'assembled' => '2 - Assembled',
+            'split_up' => '3 - Split up',
+            'generating' => '4 - Generating',
+            'ingredient' => '5 - Ingredient',
+        ],
+        'tax' => [
+            'no' => '---',
+            'a' => '1 - A',
+            'b' => '1 - B',
+            'c' => '1 - C',
+            'd' => '1 - D',
+        ],
+        'type' => [
+            'product' => 'Product',
+            'service' => 'Service',
+        ],
+        'unit_code' => [
+            'kg' => 'KG',
+            'l' => 'L',
+            'm' => 'M',
+            'm0' => 'M(0.000)',
+            'm2' => 'M*2',
+            'm3' => 'M*3',
+            'val' => 'VAL',
+            'vnt' => 'VNT',
+        ],
+        'invoice' => [
+            'pr000' => '(PR000) Invoice connection',
+            'pr001' => '(PR001) Invoice connection',
+            'pr002' => '(PR002) Invoice connection',
+            'pr003' => '(PR003) Invoice connection',
+            'pr004' => '(PR004) Invoice connection',
+            'pr005' => '(PR005) Invoice connection',
+            'pr006' => '(PR006) Invoice connection',
+            'pr007' => '(PR007) Invoice connection',
+        ],
+    ],
 ];

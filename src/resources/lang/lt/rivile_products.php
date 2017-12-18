@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types = 1);
+
 return [
     'page_title' => 'HCRivileProducts',
     'COUNT' => 'COUNT',
@@ -106,4 +109,44 @@ return [
     'N17_PAV_K2' => 'Pavadinimas kita kalba 2',
     'N17_PAV_K3' => 'Pavadinimas kita kalba 3',
 
+    'enum' => [
+        'assembly' => [
+            'simple' => '1 - Paprasta',
+            'assembled' => '2 - Komplektuojama',
+            'split_up' => '3 - Išskaidoma',
+            'generating' => '4 - Generuojama',
+            'ingredient' => '5 - Sudėtinė',
+        ],
+        'tax' => [
+            'no' => '---',
+            'a' => '1 - A',
+            'b' => '1 - B',
+            'c' => '1 - C',
+            'd' => '1 - D',
+        ],
+        'type' => [
+            'product' => 'Prekė',
+            'service' => 'Paslauga',
+        ],
+        'unit_code' => [
+            'kg' => 'KG',
+            'l' => 'L',
+            'm' => 'M',
+            'm0' => 'M(0.000)',
+            'm2' => 'M*2',
+            'm3' => 'M*3',
+            'val' => 'VAL',
+            'vnt' => 'VNT',
+        ],
+        'invoice' => [
+            'pr000' => '(PR000) Sąskaitų ryšio kodas',
+            'pr001' => '(PR001) Sąskaitų ryšio kodas',
+            'pr002' => '(PR002) Sąskaitų ryšio kodas',
+            'pr003' => '(PR003) Sąskaitų ryšio kodas',
+            'pr004' => '(PR004) Sąskaitų ryšio kodas',
+            'pr005' => '(PR005) Sąskaitų ryšio kodas',
+            'pr006' => '(PR006) Sąskaitų ryšio kodas',
+            'pr007' => '(PR007) Sąskaitų ryšio kodas',
+        ],
+    ],
 ];
