@@ -122,7 +122,7 @@ class RivileServiceProvider extends HCBaseServiceProvider
         ];
 
         foreach ($routes as $route) {
-            $router->group(['namespace' => $this->namespace], function($router) use ($route) {
+            $router->group(['namespace' => $this->namespace], function ($router) use ($route) {
                 require $route;
             });
         }
@@ -192,8 +192,3 @@ class RivileServiceProvider extends HCBaseServiceProvider
         $this->app->singleton(T03SdocRepository::class);
     }
 }
-
-
-
-
-

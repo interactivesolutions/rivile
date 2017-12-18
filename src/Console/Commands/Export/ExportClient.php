@@ -53,14 +53,12 @@ class ExportClient extends RivileCore
         $this->action = 'N08';
 
         switch ($this->argument('action')) {
-            case "new":
-
+            case 'new':
                 $this->operation = 'I';
                 $this->actionMethod = self::ACTION_METHOD_NEW;
                 break;
 
-            case "update":
-
+            case 'update':
                 $this->operation = 'U';
                 $this->actionMethod = self::ACTION_METHOD_UPDATE;
                 break;
