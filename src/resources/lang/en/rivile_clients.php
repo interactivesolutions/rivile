@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types = 1);
+
 return [
     'page_title' => 'Rivile clients',
     'count' => 'count',
@@ -75,4 +78,28 @@ return [
     'N08_SUMA_WK' => 'N08 SUMA WK',
     'N08_KODAS_VL_U' => 'N08 KODAS VL U',
 
+    'enum' => [
+        'type' => [
+            'customer' => 'Customer',
+            'supplier' => 'Supplier',
+            'customer_supplier' => 'Customer/Supplier',
+            'company' => 'Company',
+        ],
+        'invoice' => [
+            'pt001' => '(PT001) Clients invoice connection',
+            'pt002' => '(PT002) Clients invoice connection (LT)',
+            'pt003' => '(PT003) Clients invoice connection (LT - B class)',
+            'pt004' => '(PT004) Clients invoice connection (ES-products)',
+            'pt005' => '(PT005) Clients invoice connection (for import)',
+            'pt006' => '(PT006) Clients invoice connection (Leasing)',
+            'pt007' => '(PT007) Clients invoice connection (ES-service)',
+            'pt008' => '(PT008) Clients invoice connection (LT_96 str)',
+            'pt009' => '(PT009) Clients invoice connection (interest)',
+            'pt010' => '(PT010) Clients invoice connection-Leasing-swedbank',
+        ],
+        'class' => [
+            'document' => 'By documents',
+            'account' => 'By accounts',
+        ],
+    ],
 ];
