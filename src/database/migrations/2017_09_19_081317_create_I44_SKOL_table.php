@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateI44SKOLTable
+ */
 class CreateI44SKOLTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateI44SKOLTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('I44_SKOL', function(Blueprint $table) {
+        Schema::create('I44_SKOL', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('I44_MODUL', 2)->nullable()->comment('Modulis');
             $table->string('I44_KODAS_OP', 12)->nullable()->comment('Operacijos numeris');
             $table->integer('I44_EIL_NR')->nullable()->comment('Eilutės numeris operacijoje');
@@ -57,7 +62,7 @@ class CreateI44SKOLTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('I44_SKOL');
     }

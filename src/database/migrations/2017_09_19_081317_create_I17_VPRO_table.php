@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateI17VPROTable
+ */
 class CreateI17VPROTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateI17VPROTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('I17_VPRO', function(Blueprint $table) {
+        Schema::create('I17_VPRO', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('I17_KODAS_IS', 12)->nullable()->comment('Padalinio kodas');
             $table->string('I17_KODAS_PS', 12)->nullable()->comment('Prekės kodas');
             $table->string('I17_KODAS_OS', 12)->nullable()->comment('Objekto kodas');
@@ -52,7 +57,7 @@ class CreateI17VPROTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('I17_VPRO');
     }

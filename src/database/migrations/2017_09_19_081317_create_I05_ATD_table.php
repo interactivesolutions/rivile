@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateI05ATDTable
+ */
 class CreateI05ATDTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateI05ATDTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('I05_ATD', function(Blueprint $table) {
+        Schema::create('I05_ATD', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('I05_KODAS_CH', 12)->nullable()->comment('Operacijos numeris');
             $table->string('I05_EIL_NR', 6)->nullable()->comment('Eilutės numeris dokumente');
             $table->string('I05_DOK_NR', 20)->nullable()->comment('Dokumento numeris');
@@ -56,7 +61,7 @@ class CreateI05ATDTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('I05_ATD');
     }

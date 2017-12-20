@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateN32PABCTable
+ */
 class CreateN32PABCTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateN32PABCTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('N32_PABC', function(Blueprint $table) {
+        Schema::create('N32_PABC', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('N32_KODAS_PS', 12)->nullable()->comment('Prekės/Paslaugos kodas');
             $table->string('N32_KODAS_US', 12)->nullable()->comment('Matavimo vieneto kodas');
             $table->string('N32_TIPAS', 1)->nullable()->comment('Nuolaidos tipas A,B,C,...J');
@@ -43,7 +48,7 @@ class CreateN32PABCTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('N32_PABC');
     }

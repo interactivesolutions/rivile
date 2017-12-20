@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types =1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateN26KOMPTable extends Migration
 {
@@ -11,14 +14,13 @@ class CreateN26KOMPTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('N26_KOMP', function(Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('N26_KODAS_PS', 12)->nullable()->comment('Gaminio kodas');
             $table->integer('N26_EIL_NR')->nullable()->comment('Eilutės numeris');
             $table->integer('N26_TIPAS')->nullable()->comment('Komponentės tipas:1-prekė,2-kodas');
@@ -46,7 +48,7 @@ class CreateN26KOMPTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('N26_KOMP');
     }

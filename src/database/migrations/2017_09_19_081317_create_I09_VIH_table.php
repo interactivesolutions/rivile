@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateI09VIHTable
+ */
 class CreateI09VIHTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateI09VIHTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('I09_VIH', function(Blueprint $table) {
+        Schema::create('I09_VIH', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('I09_KODAS_VD', 12)->nullable()->comment('Operacijos numeris');
             $table->integer('I09_TIPAS')->nullable()->comment('Dokumento tipas:1-važtaraštis,2-užsakymas');
             $table->string('I09_DOK_NR', 12)->nullable()->comment('Dokumento numeris');
@@ -64,7 +69,7 @@ class CreateI09VIHTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('I09_VIH');
     }

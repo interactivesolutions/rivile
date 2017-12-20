@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateN33KBANTable
+ */
 class CreateN33KBANTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateN33KBANTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('N33_KBAN', function(Blueprint $table) {
+        Schema::create('N33_KBAN', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('N33_KODAS_KS', 12)->nullable()->comment('Kliento kodas');
             $table->integer('N33_EIL_NR')->nullable()->comment('Detalios eilutės numeris');
             $table->string('N33_PAV', 70)->nullable()->comment('Alternatyvus pavadinimas');
@@ -63,7 +68,7 @@ class CreateN33KBANTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('N33_KBAN');
     }

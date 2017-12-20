@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateN17PRODTable
+ */
 class CreateN17PRODTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateN17PRODTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('N17_PROD', function(Blueprint $table) {
+        Schema::create('N17_PROD', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('N17_KODAS_PS', 12)->nullable()->comment('Prekės kodas');
             $table->integer('N17_TIPAS')->nullable()->comment('Tipas:1-prekė,2-paslauga');
             $table->string('N17_KODAS_P1', 12)->nullable()->comment('Pirmas alternatyvus kodas');
@@ -131,7 +136,7 @@ class CreateN17PRODTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('N17_PROD');
     }

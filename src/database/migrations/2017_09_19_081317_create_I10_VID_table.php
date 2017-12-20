@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateI10VIDTable
+ */
 class CreateI10VIDTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateI10VIDTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('I10_VID', function(Blueprint $table) {
+        Schema::create('I10_VID', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('I10_KODAS_VD', 12)->nullable()->comment('Operacijos numeris');
             $table->integer('I10_EIL_NR')->nullable()->comment('Detalios eilutės numeris');
             $table->string('I10_KODAS_TR', 12)->nullable()->comment('Transporto operacijos numeris');
@@ -65,7 +70,7 @@ class CreateI10VIDTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('I10_VID');
     }

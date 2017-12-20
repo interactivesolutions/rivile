@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateI04ATHTable
+ */
 class CreateI04ATHTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateI04ATHTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('I04_ATH', function(Blueprint $table) {
+        Schema::create('I04_ATH', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('I04_KODAS_CH', 12)->nullable()->comment('Operacijos numeris');
             $table->string('I04_DOK_NR', 20)->nullable()->comment('Dokumento numeris');
             $table->integer('I04_OP_RUSIS')->nullable()->comment('Rūšis:1-įplaukos,2-išmokos');
@@ -63,7 +68,7 @@ class CreateI04ATHTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('I04_ATH');
     }

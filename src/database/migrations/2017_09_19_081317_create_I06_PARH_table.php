@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateI06PARHTable
+ */
 class CreateI06PARHTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateI06PARHTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('I06_PARH', function(Blueprint $table) {
+        Schema::create('I06_PARH', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('I06_KODAS_PO', 12)->nullable()->comment('Operacijos numeris');
             $table->integer('I06_OP_TIP')->nullable()->comment('Tipas: pirkimų (1-V,2-G,3-U,4-P) pardavimų (51-V,52-G,53-U,54-R,55-P,56-POS)');
             $table->boolean('I06_VAL_POZ')->nullable()->comment('Ar valiutinis dokumentas?:0-ne,1-taip');
@@ -79,7 +84,7 @@ class CreateI06PARHTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('I06_PARH');
     }

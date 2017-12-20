@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateN31NUODTable
+ */
 class CreateN31NUODTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateN31NUODTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('N31_NUOD', function(Blueprint $table) {
+        Schema::create('N31_NUOD', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('N31_KODAS_NS', 12)->nullable()->comment('Nuolaidos lentelės kodas');
             $table->integer('N31_EIL_NR')->nullable()->comment('Detalios eilutės numeris');
             $table->float('N31_MINIMUM', 14, 3)->nullable()->comment('Minimalus kiekis pagrindiniu matu');
@@ -35,7 +40,7 @@ class CreateN31NUODTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('N31_NUOD');
     }

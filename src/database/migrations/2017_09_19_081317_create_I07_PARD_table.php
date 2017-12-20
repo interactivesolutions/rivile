@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateI07PARDTable
+ */
 class CreateI07PARDTable extends Migration
 {
 
@@ -11,14 +17,13 @@ class CreateI07PARDTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('I07_PARD', function(Blueprint $table) {
+        Schema::create('I07_PARD', function (Blueprint $table) {
             $table->integer('count', true);
-            $table->string('id', 36)->unique('ID_UNIQUE');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('deleted_at')->nullable();
+            $table->string('id', 36)->unique();
+            $table->timestamps();
+            $table->softDeletes();
             $table->string('I07_KODAS_PO', 12)->nullable()->comment('Operacijos numeris');
             $table->integer('I07_EIL_NR')->nullable()->comment('Eilutės numeris operacijoje');
             $table->integer('I07_TIPAS')->nullable()->comment('Tipas:1-prekė,2-paslauga,3-kodas,4-pranesimas,5-aprašymas');
@@ -80,10 +85,10 @@ class CreateI07PARDTable extends Migration
             $table->float('I07_INT_KIEKIS', 14, 3)->nullable()->comment('Intrastate kiekis');
             $table->float('I07_PVM_VAL', 18)->nullable()->comment('PVM valiuta');
             $table->string('I07_KODAS_KS', 12)->nullable()->comment('Tiekėjo kodas');
-            $table->float('I07_KIEKIS_A', 12,
-                4)->nullable()->comment('Alternatyvus kiekis(naudojamas tik informacijos įdėjimui per webservisą)');
-            $table->string('I07_BAR_KODAS',
-                12)->nullable()->comment('Bar_kodas(naudojamas tik informacijos įdėjimui per webservisą)');
+            $table->float('I07_KIEKIS_A', 12, 4)->nullable()
+                ->comment('Alternatyvus kiekis(naudojamas tik informacijos įdėjimui per webservisą)');
+            $table->string('I07_BAR_KODAS', 12)->nullable()
+                ->comment('Bar_kodas(naudojamas tik informacijos įdėjimui per webservisą)');
             $table->string('I07_APRASYMAS1', 150)->nullable()->comment('Aprašymo laukas 1');
             $table->string('I07_APRASYMAS2', 150)->nullable()->comment('Aprašymo laukas 2');
             $table->string('I07_APRASYMAS3', 150)->nullable()->comment('Aprašymo laukas 3');
@@ -96,7 +101,7 @@ class CreateI07PARDTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('I07_PARD');
     }
