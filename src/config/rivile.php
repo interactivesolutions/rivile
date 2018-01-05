@@ -20,5 +20,44 @@ return [
     | Rivile rows id prefix
     |---------------------------------------------------------------------------
     */
-    'rivile_id_prefix' => env('RIVILE_ID_PREFIX', 'XXX')
+    'rivile_id_prefix' => env('RIVILE_ID_PREFIX', 'XXX'),
+
+    /*
+    |---------------------------------------------------------------------------
+    | Europe union countries
+    |---------------------------------------------------------------------------
+    */
+    'eu_countries' => [
+        'ie',
+        'at',
+        'be',
+        'bg',
+        'cz',
+        'dk',
+        'gb',
+        'ee',
+        'gr',
+        'es',
+        'is',
+        'it',
+        'cy',
+        'hr',
+        'lv',
+        'pl',
+        'li',
+        'lu',
+        'mt',
+        'nl',
+        'no',
+        'pt',
+        'fr',
+        'ro',
+        'sk',
+        'si',
+        'fi',
+        'se',
+        'hu',
+        'de',
+        'lt',
+    ],
 ];
