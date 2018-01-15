@@ -6,6 +6,7 @@ namespace InteractiveSolutions\Rivile\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
 /**
@@ -74,6 +75,7 @@ use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
  * @method static Builder|I17Vpro whereLikutisUsA($value)
  * @method static Builder|I17Vpro whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \InteractiveSolutions\Rivile\Models\N17Prod|null $n17Prod
  */
 class I17Vpro extends HCUuidModel
 {
@@ -81,7 +83,6 @@ class I17Vpro extends HCUuidModel
      * @var string
      */
     protected $table = 'I17_VPRO';
-
     /**
      * @var array
      */
@@ -115,4 +116,16 @@ class I17Vpro extends HCUuidModel
         'likutis_us_a',
     ];
 
+    protected $casts = [
+        'id' => 'string',
+        'I17_KODAS_PS' => 'string',
+    ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function n17Prod(): BelongsTo
+    {
+        return $this->belongsTo(N17Prod::class, 'I17_KODAS_PS', 'N17_KODAS_PS');
+    }
 }

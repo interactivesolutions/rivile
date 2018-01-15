@@ -75,6 +75,10 @@ class ImportClients extends RivileCore
         $lastItem = null;
         $n08Ids = [];
 
+        if (!isset($response[0])) {
+            $response = [$response];
+        }
+
         foreach ($response as $item) {
             $lastItem = $item;
             $this->clearEmptySpaces($item);
