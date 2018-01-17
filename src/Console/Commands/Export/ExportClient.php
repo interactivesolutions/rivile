@@ -51,6 +51,7 @@ class ExportClient extends RivileCore
     protected function init()
     {
         $this->action = 'N08';
+        $this->xmlRootName = 'N08';
 
         switch ($this->argument('action')) {
             case 'new':

@@ -55,13 +55,11 @@ class ExportProduct extends RivileCore
 
         switch ($this->argument('action')) {
             case 'new':
-
                 $this->operation = 'I';
                 $this->actionMethod = self::ACTION_METHOD_NEW;
                 break;
 
             case 'update':
-
                 $this->operation = 'U';
                 $this->actionMethod = self::ACTION_METHOD_UPDATE;
                 break;

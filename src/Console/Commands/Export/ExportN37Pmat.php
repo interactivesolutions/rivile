@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Console\Commands\Export;
 
-
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Repositories\N37PmatRepository;
 
@@ -20,14 +19,12 @@ class ExportN37Pmat extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:export-n37pmat {action} {id}';
-
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'EDIT_N37 - Export';
-
     /**
      * @var N37PmatRepository
      */
@@ -46,7 +43,6 @@ class ExportN37Pmat extends RivileCore
 
     /**
      * Initializing data
-
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function init()
@@ -56,13 +52,11 @@ class ExportN37Pmat extends RivileCore
 
         switch ($this->argument('action')) {
             case 'new':
-
                 $this->operation = 'I';
                 $this->actionMethod = self::ACTION_METHOD_NEW;
                 break;
 
             case 'update':
-
                 $this->operation = 'U';
                 $this->actionMethod = self::ACTION_METHOD_UPDATE;
                 break;
