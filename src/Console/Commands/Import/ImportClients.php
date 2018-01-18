@@ -22,14 +22,12 @@ class ImportClients extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:import-clients';
-
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'GET_N08_LIST - Import';
-
     /**
      * @var N08KlijRepository
      */
@@ -125,6 +123,4 @@ class ImportClients extends RivileCore
             ], $item);
         }
     }
-
-
 }

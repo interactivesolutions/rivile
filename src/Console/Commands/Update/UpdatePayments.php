@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Models\I04Ath;
 
+/**
+ * Class UpdatePayments
+ * @package InteractiveSolutions\Rivile\Console\Commands\Update
+ */
 class UpdatePayments extends RivileCore
 {
     /**
@@ -13,7 +19,6 @@ class UpdatePayments extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:update-payments';
-
     /**
      * The console command description.
      *

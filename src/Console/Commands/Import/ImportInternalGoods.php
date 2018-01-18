@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Console\Commands\Import;
 
-
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Models\I17Vpro;
 
@@ -20,7 +19,6 @@ class ImportInternalGoods extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:import-internal-goods';
-
     /**
      * The console command description.
      *

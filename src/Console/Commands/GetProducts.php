@@ -19,7 +19,6 @@ class GetProducts extends HCCommand
      * @var string
      */
     protected $signature = 'rivile:get-products';
-
     /**
      * The console command description.
      *

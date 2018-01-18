@@ -115,7 +115,6 @@ class RivileCore extends Command
      */
     protected function init()
     {
-
     }
 
     /**
@@ -151,8 +150,7 @@ class RivileCore extends Command
         $soapClient = new SoapClient($this->url);
 
         switch ($this->actionMethod) {
-            case self::ACTION_METHOD_GET :
-
+            case self::ACTION_METHOD_GET:
                 switch ($this->getAction()) {
                     case 'GET_I17_LIST':
                         $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}(
@@ -181,11 +179,9 @@ class RivileCore extends Command
 
                 break;
 
-            case self::ACTION_METHOD_DELETE :
-            case self::ACTION_METHOD_NEW :
+            case self::ACTION_METHOD_DELETE:
+            case self::ACTION_METHOD_NEW:
             case self::ACTION_METHOD_UPDATE:
-
-
                 array_forget($this->data, ['id', 'count', 'created_at', 'updated_at', 'deleted_at']);
 
                 $xml = $this->array2xml($this->data, $this->action, true);
@@ -255,7 +251,6 @@ class RivileCore extends Command
             }
 
             throw new \Exception($message);
-
         }
 
         $array = $this->clearArrayFromEmptyArrays($array[$this->xmlRootName]);
@@ -288,14 +283,12 @@ class RivileCore extends Command
     private function getAction()
     {
         switch ($this->actionMethod) {
-            case self::ACTION_METHOD_GET :
-
+            case self::ACTION_METHOD_GET:
                 return 'GET_' . $this->action . '_LIST';
 
-            case self::ACTION_METHOD_UPDATE :
-            case self::ACTION_METHOD_NEW :
-            case self::ACTION_METHOD_DELETE :
-
+            case self::ACTION_METHOD_UPDATE:
+            case self::ACTION_METHOD_NEW:
+            case self::ACTION_METHOD_DELETE:
                 return 'EDIT_' . $this->action;
         }
     }

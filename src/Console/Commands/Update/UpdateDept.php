@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Models\I44Skol;
 
+/**
+ * Class UpdateDept
+ * @package InteractiveSolutions\Rivile\Console\Commands\Update
+ */
 class UpdateDept extends RivileCore
 {
     /**
@@ -13,7 +19,6 @@ class UpdateDept extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:update-dept';
-
     /**
      * The console command description.
      *
@@ -27,7 +32,6 @@ class UpdateDept extends RivileCore
     protected function init()
     {
         $lastItem = I44Skol::orderBy('I44_R_DATE', 'desc')->get()[1]->I44_R_DATE;
-
 
         $this->listType = 'A';
         $this->filters = "I44_R_DATE>'$lastItem'";

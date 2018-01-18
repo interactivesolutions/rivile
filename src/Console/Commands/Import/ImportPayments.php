@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Console\Commands\Import;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Models\I04Ath;
 
+/**
+ * Class ImportPayments
+ * @package InteractiveSolutions\Rivile\Console\Commands\Import
+ */
 class ImportPayments extends RivileCore
 {
     /**
@@ -13,7 +19,6 @@ class ImportPayments extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:import-payments';
-
     /**
      * The console command description.
      *

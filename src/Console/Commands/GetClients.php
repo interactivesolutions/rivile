@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Console\Commands;
 
 use InteractiveSolutions\HoneycombCore\Console\HCCommand;
 use InteractiveSolutions\Rivile\Models\N08Klij;
 
+/**
+ * Class GetClients
+ * @package InteractiveSolutions\Rivile\Console\Commands
+ */
 class GetClients extends HCCommand
 {
     /**
@@ -13,7 +19,6 @@ class GetClients extends HCCommand
      * @var string
      */
     protected $signature = 'rivile:get-clients';
-
     /**
      * The console command description.
      *

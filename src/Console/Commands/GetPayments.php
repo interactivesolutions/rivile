@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Console\Commands;
 
 use InteractiveSolutions\HoneycombCore\Console\HCCommand;
 use InteractiveSolutions\Rivile\Models\I04Ath;
 
+/**
+ * Class GetPayments
+ * @package InteractiveSolutions\Rivile\Console\Commands
+ */
 class GetPayments extends HCCommand
 {
     /**
@@ -13,7 +19,6 @@ class GetPayments extends HCCommand
      * @var string
      */
     protected $signature = 'rivile:get-payments';
-
     /**
      * The console command description.
      *

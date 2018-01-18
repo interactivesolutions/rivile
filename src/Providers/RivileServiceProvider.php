@@ -10,15 +10,21 @@ use InteractiveSolutions\Rivile\Console\Commands\Export\ExportClient;
 use InteractiveSolutions\Rivile\Console\Commands\Export\ExportN37Pmat;
 use InteractiveSolutions\Rivile\Console\Commands\Export\ExportProduct;
 use InteractiveSolutions\Rivile\Console\Commands\GetClients;
+use InteractiveSolutions\Rivile\Console\Commands\GetDept;
+use InteractiveSolutions\Rivile\Console\Commands\GetI06List;
 use InteractiveSolutions\Rivile\Console\Commands\GetInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\GetPayments;
 use InteractiveSolutions\Rivile\Console\Commands\GetProducts;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportClients;
+use InteractiveSolutions\Rivile\Console\Commands\Import\ImportDept;
+use InteractiveSolutions\Rivile\Console\Commands\Import\ImportI06List;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportPayments;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportProducts;
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateClients;
+use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateDept;
+use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateI06List;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdatePayments;
 use InteractiveSolutions\Rivile\Console\Commands\Update\UpdateProducts;
@@ -70,19 +76,25 @@ class RivileServiceProvider extends HCBaseServiceProvider
         RivileCore::class,
 
         GetClients::class,
+        GetDept::class,
+        GetI06List::class,
         GetInternalGoods::class,
-        GetProducts::class,
         GetPayments::class,
+        GetProducts::class,
 
         ImportClients::class,
+        ImportDept::class,
+        ImportI06List::class,
         ImportInternalGoods::class,
-        ImportProducts::class,
         ImportPayments::class,
+        ImportProducts::class,
 
         UpdateClients::class,
+        UpdateDept::class,
+        UpdateI06List::class,
         UpdateInternalGoods::class,
-        UpdateProducts::class,
         UpdatePayments::class,
+        UpdateProducts::class,
 
         ExportClient::class,
         ExportProduct::class,

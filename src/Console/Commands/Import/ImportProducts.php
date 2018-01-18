@@ -23,14 +23,12 @@ class ImportProducts extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:import-products';
-
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'GET_N17_LIST - Import';
-
     /**
      * @var N17ProdRepository
      */
@@ -125,7 +123,7 @@ class ImportProducts extends RivileCore
             $data = [$data];
         }
 
-        foreach ($data as $key => $item) {
+        foreach ($data as $item) {
             $this->i33PkaiRepository->updateOrCreate([
                 'I33_KODAS_PS' => $item['I33_KODAS_PS'],
                 'I33_KODAS_IS' => $item['I33_KODAS_IS'],
@@ -148,7 +146,7 @@ class ImportProducts extends RivileCore
             $data = [$data];
         }
 
-        foreach ($data as $key => $item) {
+        foreach ($data as $item) {
             $this->n37PmatRepository->updateOrCreate([
                 'N37_KODAS_PS' => $item['N37_KODAS_PS'],
                 'N37_KODAS_US' => $item['N37_KODAS_US'],

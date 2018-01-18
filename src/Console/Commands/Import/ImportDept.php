@@ -1,10 +1,15 @@
 <?php
+declare(strict_types =1);
 
 namespace InteractiveSolutions\Rivile\Console\Commands\Import;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Models\I44Skol;
 
+/**
+ * Class ImportDept
+ * @package InteractiveSolutions\Rivile\Console\Commands\Import
+ */
 class ImportDept extends RivileCore
 {
     /**

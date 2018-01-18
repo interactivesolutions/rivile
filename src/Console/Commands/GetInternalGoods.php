@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Console\Commands;
 
-
 use InteractiveSolutions\HoneycombCore\Console\HCCommand;
 use InteractiveSolutions\Rivile\Models\I17Vpro;
 
@@ -20,7 +19,6 @@ class GetInternalGoods extends HCCommand
      * @var string
      */
     protected $signature = 'rivile:get-internal-goods';
-
     /**
      * The console command description.
      *

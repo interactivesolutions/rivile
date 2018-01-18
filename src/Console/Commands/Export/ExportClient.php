@@ -19,14 +19,12 @@ class ExportClient extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:export-client {action} {id}';
-
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'EDIT_N08 - Export';
-
     /**
      * @var N08KlijRepository
      */

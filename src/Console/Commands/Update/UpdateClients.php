@@ -10,6 +10,10 @@ use InteractiveSolutions\Rivile\Models\N08Klij;
 use InteractiveSolutions\Rivile\Repositories\N08KlijRepository;
 use InteractiveSolutions\Rivile\Repositories\N33KbanRepository;
 
+/**
+ * Class UpdateClients
+ * @package InteractiveSolutions\Rivile\Console\Commands\Update
+ */
 class UpdateClients extends RivileCore
 {
     /**
@@ -18,14 +22,12 @@ class UpdateClients extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:update-clients';
-
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'GET_N08_LIST - Update clients list';
-
     /**
      * @var N08KlijRepository
      */

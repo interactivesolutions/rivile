@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
-
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Models\I17Vpro;
 
@@ -20,7 +19,6 @@ class UpdateInternalGoods extends RivileCore
      * @var string
      */
     protected $signature = 'rivile:update-internal-goods';
-
     /**
      * The console command description.
      *
