@@ -5,30 +5,30 @@ declare(strict_types = 1);
 namespace InteractiveSolutions\Rivile\Events;
 
 /**
- * Class ClientsUpdateEvent
+ * Class OrdersUpdateEvent
  * @package InteractiveSolutions\Rivile\Events
  */
-class ClientsUpdateEvent
+class OrdersUpdateEvent
 {
     /**
      * @var array
      */
-    private $n08Ids;
+    private $i06Ids;
 
     /**
      * ClientsImportEvent constructor.
-     * @param array $n08Ids
+     * @param array $i06Ids
      */
-    public function __construct(array $n08Ids)
+    public function __construct(array $i06Ids)
     {
-        $this->n08Ids = $n08Ids;
+        $this->i06Ids = $i06Ids;
     }
 
     /**
      * @return array
      */
-    public function getN08Ids(): array
+    public function getI06Ids(): array
     {
-        return $this->n08Ids;
+        return $this->i06Ids;
     }
 }

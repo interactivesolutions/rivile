@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Events;
 
-
 /**
  * Class ClientsImportEvent
  * @package InteractiveSolutions\Rivile\Events
