@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 
@@ -8,6 +9,10 @@ use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\Rivile\Models\I44Skol;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileDeptValidator;
 
+/**
+ * Class HCRivileDeptController
+ * @package InteractiveSolutions\Rivile\Http\Controllers\Rivile
+ */
 class HCRivileDeptController extends HCBaseController
 {
     /**
@@ -42,124 +47,124 @@ class HCRivileDeptController extends HCBaseController
     {
         return [
             'COUNT' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.COUNT'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.COUNT'),
             ],
             'I44_MODUL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_MODUL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_MODUL'),
             ],
             'I44_KODAS_OP' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_OP'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_OP'),
             ],
             'I44_EIL_NR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_EIL_NR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_EIL_NR'),
             ],
             'I44_TIPAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_TIPAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_TIPAS'),
             ],
             'I44_DOK_NR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_DOK_NR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_DOK_NR'),
             ],
             'I44_KODAS_KS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_KS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_KS'),
             ],
             'I44_KODAS_MS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_MS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_MS'),
             ],
             'I44_KODAS_IS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_IS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_IS'),
             ],
             'I44_KODAS_OS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_OS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_OS'),
             ],
             'I44_KODAS_OS_C' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_OS_C'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_OS_C'),
             ],
             'I44_KODAS_SS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_SS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_SS'),
             ],
             'I44_DATA_DOK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_DATA_DOK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_DATA_DOK'),
             ],
             'I44_DATA_MOK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_DATA_MOK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_DATA_MOK'),
             ],
             'I44_DATA_DSK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_DATA_DSK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_DATA_DSK'),
             ],
             'I44_DSK_PROC' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_DSK_PROC'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_DSK_PROC'),
             ],
             'I44_SUMA_DB' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_SUMA_DB'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_SUMA_DB'),
             ],
             'I44_SUMA_CR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_SUMA_CR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_SUMA_CR'),
             ],
             'I44_KODAS_VL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_VL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_VL'),
             ],
             'I44_SUMA_DB_VL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_SUMA_DB_VL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_SUMA_DB_VL'),
             ],
             'I44_SUMA_CR_VL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_SUMA_CR_VL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_SUMA_CR_VL'),
             ],
             'I44_SUMA_PLK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_SUMA_PLK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_SUMA_PLK'),
             ],
             'I44_SAVIKAINA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_SAVIKAINA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_SAVIKAINA'),
             ],
             'I44_PVM' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_PVM'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_PVM'),
             ],
             'I44_PASTABOS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_PASTABOS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_PASTABOS'),
             ],
             'I44_ADDUSR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_ADDUSR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_ADDUSR'),
             ],
             'I44_R_DATE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_R_DATE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_R_DATE'),
             ],
             'I44_USERIS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_USERIS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_USERIS'),
             ],
             'I44_KODAS_KT' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_KT'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_KT'),
             ],
             'I44_KODAS_K0' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_dept.I44_KODAS_K0'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_dept.I44_KODAS_K0'),
             ],
 
         ];
@@ -348,7 +353,7 @@ class HCRivileDeptController extends HCBaseController
 
         $list = I44Skol::with($with)->select($select)
             // add filters
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -372,7 +377,7 @@ class HCRivileDeptController extends HCBaseController
      */
     protected function searchQuery(Builder $query, string $phrase): Builder
     {
-        return $query->where(function(Builder $query) use ($phrase) {
+        return $query->where(function (Builder $query) use ($phrase) {
             $query->where('COUNT', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('I44_MODUL', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('I44_KODAS_OP', 'LIKE', '%' . $phrase . '%')

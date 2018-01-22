@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileClientsValidator;
@@ -62,24 +63,24 @@ class HCRivileClientsController extends HCBaseController
     {
         return [
             'N08_PVM_KODAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_clients.N08_PVM_KODAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_clients.N08_PVM_KODAS'),
             ],
             'N08_IM_KODAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_clients.N08_IM_KODAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_clients.N08_IM_KODAS'),
             ],
             'N08_PAV' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_clients.N08_PAV'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_clients.N08_PAV'),
             ],
             'N08_ATSTOVAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_clients.N08_ATSTOVAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_clients.N08_ATSTOVAS'),
             ],
             'N08_E_MAIL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_clients.N08_E_MAIL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_clients.N08_E_MAIL'),
             ],
 
         ];
@@ -101,6 +102,7 @@ class HCRivileClientsController extends HCBaseController
      * Create item
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiStore()
     {
@@ -108,7 +110,7 @@ class HCRivileClientsController extends HCBaseController
 
         $record = N08Klij::create(array_get($data, 'record'));
 
-        \Artisan::call('rivile:export-client', ['action' => 'new', 'id' => $record->id]);
+        Artisan::call('rivile:export-client', ['action' => 'new', 'id' => $record->id]);
 
         return $this->apiShow($record->id);
     }
@@ -117,6 +119,7 @@ class HCRivileClientsController extends HCBaseController
      * Getting user data on POST call
      *
      * @return mixed
+     * @throws \Exception
      */
     protected function getInputData()
     {
@@ -228,8 +231,9 @@ class HCRivileClientsController extends HCBaseController
     /**
      * Updates existing item based on ID
      *
-     * @param $id
+     * @param string $id
      * @return mixed
+     * @throws \Exception
      */
     protected function __apiUpdate(string $id)
     {
@@ -311,7 +315,7 @@ class HCRivileClientsController extends HCBaseController
 
         $list = N08Klij::with($with)->select($select)
             // add filters
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -335,7 +339,7 @@ class HCRivileClientsController extends HCBaseController
      */
     protected function searchQuery(Builder $query, string $phrase): Builder
     {
-        return $query->where(function(Builder $query) use ($phrase) {
+        return $query->where(function (Builder $query) use ($phrase) {
             $query->where('count', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('N08_KODAS_KS', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('N08_RUSIS', 'LIKE', '%' . $phrase . '%')

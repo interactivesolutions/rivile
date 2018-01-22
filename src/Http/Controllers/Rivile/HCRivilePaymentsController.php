@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 
@@ -8,6 +9,10 @@ use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\Rivile\Models\I04Ath;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivilePaymentsValidator;
 
+/**
+ * Class HCRivilePaymentsController
+ * @package InteractiveSolutions\Rivile\Http\Controllers\Rivile
+ */
 class HCRivilePaymentsController extends HCBaseController
 {
     /**
@@ -42,144 +47,144 @@ class HCRivilePaymentsController extends HCBaseController
     {
         return [
             'I04_KODAS_CH' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_CH'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_CH'),
             ],
             'I04_DOK_NR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_DOK_NR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_DOK_NR'),
             ],
             'I04_OP_RUSIS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_OP_RUSIS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_OP_RUSIS'),
             ],
             'I04_OP_TIPAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_OP_TIPAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_OP_TIPAS'),
             ],
             'I04_OP_STORNO' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_OP_STORNO'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_OP_STORNO'),
             ],
             'I04_OP_DATA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_OP_DATA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_OP_DATA'),
             ],
             'I04_KODAS_SS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_SS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_SS'),
             ],
             'I04_MOKETOJAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_MOKETOJAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_MOKETOJAS'),
             ],
             'I04_KODAS_KS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_KS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_KS'),
             ],
             'I04_PAV' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_PAV'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_PAV'),
             ],
             'I04_ADR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_ADR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_ADR'),
             ],
             'I04_ATSTOVAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_ATSTOVAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_ATSTOVAS'),
             ],
             'I04_KODAS_VS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_VS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_VS'),
             ],
             'I04_SUMA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_SUMA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_SUMA'),
             ],
             'I04_SUMA_DSK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_SUMA_DSK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_SUMA_DSK'),
             ],
             'I04_SUMA_PLK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_SUMA_PLK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_SUMA_PLK'),
             ],
             'I04_PASTABOS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_PASTABOS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_PASTABOS'),
             ],
             'I04_PERKELTA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_PERKELTA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_PERKELTA'),
             ],
             'I04_IMP_EXP' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_IMP_EXP'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_IMP_EXP'),
             ],
             'I04_KODAS_VL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_VL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_VL'),
             ],
             'I04_SUMA_VAL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_SUMA_VAL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_SUMA_VAL'),
             ],
             'I04_KOEF' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KOEF'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KOEF'),
             ],
             'I04_USERIS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_USERIS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_USERIS'),
             ],
             'I04_R_DATE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_R_DATE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_R_DATE'),
             ],
             'I04_ADDUSR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_ADDUSR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_ADDUSR'),
             ],
             'I04_KODAS_SM' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_SM'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_SM'),
             ],
             'I04_APRASYMAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_APRASYMAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_APRASYMAS'),
             ],
             'I04_SUMA_PER' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_SUMA_PER'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_SUMA_PER'),
             ],
             'I04_SUMA_WK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_SUMA_WK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_SUMA_WK'),
             ],
             'I04_KODAS_LS_1' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_LS_1'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_LS_1'),
             ],
             'I04_KODAS_LS_2' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_LS_2'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_LS_2'),
             ],
             'I04_KODAS_LS_3' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_LS_3'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_LS_3'),
             ],
             'I04_KODAS_LS_4' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_LS_4'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_LS_4'),
             ],
             'I04_KODAS_ZN' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_KODAS_ZN'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_KODAS_ZN'),
             ],
             'I04_BUSENA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_payments.I04_BUSENA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_payments.I04_BUSENA'),
             ],
 
         ];
@@ -374,7 +379,7 @@ class HCRivilePaymentsController extends HCBaseController
 
         $list = I04Ath::with($with)->select($select)
             // add filters
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -398,7 +403,7 @@ class HCRivilePaymentsController extends HCBaseController
      */
     protected function searchQuery(Builder $query, string $phrase): Builder
     {
-        return $query->where(function(Builder $query) use ($phrase) {
+        return $query->where(function (Builder $query) use ($phrase) {
             $query->where('COUNT', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('I04_KODAS_CH', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('I04_DOK_NR', 'LIKE', '%' . $phrase . '%')

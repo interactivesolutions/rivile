@@ -1,14 +1,20 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 
 use Illuminate\Database\Eloquent\Builder;
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\Rivile\Models\N17Prod;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileProductsValidator;
 
+/**
+ * Class HCRivileProductsController
+ * @package InteractiveSolutions\Rivile\Http\Controllers\Rivile
+ */
 class HCRivileProductsController extends HCBaseController
 {
     /**
@@ -56,420 +62,420 @@ class HCRivileProductsController extends HCBaseController
     {
         return [
             'COUNT' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.COUNT'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.COUNT'),
             ],
             'N17_KODAS_PS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_PS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_PS'),
             ],
             'N17_TIPAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_TIPAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_TIPAS'),
             ],
             'N17_KODAS_P1' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_P1'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_P1'),
             ],
             'N17_KODAS_P2' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_P2'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_P2'),
             ],
             'N17_KODAS_US' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_US'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_US'),
             ],
             'N17_PAV' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_PAV'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_PAV'),
             ],
             'N17_PAVU' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_PAVU'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_PAVU'),
             ],
             'N17_KODAS_KS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_KS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_KS'),
             ],
             'N17_KOD_T' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KOD_T'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KOD_T'),
             ],
             'N17_KODAS_KS1' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_KS1'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_KS1'),
             ],
             'N17_KOD_T1' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KOD_T1'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KOD_T1'),
             ],
             'N17_KODAS_KS2' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_KS2'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_KS2'),
             ],
             'N17_KOD_T2' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KOD_T2'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KOD_T2'),
             ],
             'N17_KODAS_VS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_VS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_VS'),
             ],
             'N17_KODAS_ES' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_ES'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_ES'),
             ],
             'N17_UZSIGUL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_UZSIGUL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_UZSIGUL'),
             ],
             'N17_BAZ_KIEKIS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_BAZ_KIEKIS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_BAZ_KIEKIS'),
             ],
             'N17_ASSEMBLY' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_ASSEMBLY'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_ASSEMBLY'),
             ],
             'N17_KODAS_LS_1' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_LS_1'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_LS_1'),
             ],
             'N17_KODAS_LS_2' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_LS_2'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_LS_2'),
             ],
             'N17_KODAS_LS_3' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_LS_3'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_LS_3'),
             ],
             'N17_KODAS_LS_4' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_LS_4'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_LS_4'),
             ],
             'N17_KODAS_DS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_DS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_DS'),
             ],
             'N17_NUOL_GR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_NUOL_GR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_NUOL_GR'),
             ],
             'N17_GALIOJA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_GALIOJA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_GALIOJA'),
             ],
             'N17_MOKESTIS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MOKESTIS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MOKESTIS'),
             ],
             'N17_TAX' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_TAX'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_TAX'),
             ],
             'N17_KODAS_KS_G' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_KS_G'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_KS_G'),
             ],
             'N17_KODAS_GS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_GS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_GS'),
             ],
             'N17_INSTR_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_INSTR_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_INSTR_POZ'),
             ],
             'N17_INSTR_TIP' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_INSTR_TIP'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_INSTR_TIP'),
             ],
             'N17_INSTR_VYK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_INSTR_VYK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_INSTR_VYK'),
             ],
             'N17_INSTR_DATE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_INSTR_DATE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_INSTR_DATE'),
             ],
             'N17_INSTR_FILE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_INSTR_FILE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_INSTR_FILE'),
             ],
             'N17_URM_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_URM_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_URM_POZ'),
             ],
             'N17_URM_DATEIN' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_URM_DATEIN'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_URM_DATEIN'),
             ],
             'N17_URM_DATEOU' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_URM_DATEOU'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_URM_DATEOU'),
             ],
             'N17_KREPS_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KREPS_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KREPS_POZ'),
             ],
             'N17_KREPS_KTG' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KREPS_KTG'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KREPS_KTG'),
             ],
             'N17_KREPS_MIN' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KREPS_MIN'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KREPS_MIN'),
             ],
             'N17_GARANT_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_GARANT_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_GARANT_POZ'),
             ],
             'N17_GARANT_MEN' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_GARANT_MEN'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_GARANT_MEN'),
             ],
             'N17_KODAS_KS3' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_KS3'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_KS3'),
             ],
             'N17_TEMPER_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_TEMPER_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_TEMPER_POZ'),
             ],
             'N17_TEMPER_MAX' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_TEMPER_MAX'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_TEMPER_MAX'),
             ],
             'N17_TEMPER_MIN' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_TEMPER_MIN'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_TEMPER_MIN'),
             ],
             'N17_TEMPER_TXT' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_TEMPER_TXT'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_TEMPER_TXT'),
             ],
             'N17_SERTIF_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_SERTIF_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_SERTIF_POZ'),
             ],
             'N17_KODAS_MS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_MS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_MS'),
             ],
             'N17_ANTKAINIS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_ANTKAINIS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_ANTKAINIS'),
             ],
             'N17_MAX_NUOL' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MAX_NUOL'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MAX_NUOL'),
             ],
             'N17_EX_IM_FRAC' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_EX_IM_FRAC'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_EX_IM_FRAC'),
             ],
             'N17_G_TIME' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_G_TIME'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_G_TIME'),
             ],
             'N17_KODAS_OS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_OS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_OS'),
             ],
             'N17_VAZ_LAIK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_VAZ_LAIK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_VAZ_LAIK'),
             ],
             'N17_UZS_LAIK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_UZS_LAIK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_UZS_LAIK'),
             ],
             'N17_PAP_LAIK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_PAP_LAIK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_PAP_LAIK'),
             ],
             'N17_SAN_COST' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_SAN_COST'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_SAN_COST'),
             ],
             'N17_UZS_COST' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_UZS_COST'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_UZS_COST'),
             ],
             'N17_TRA_COST' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_TRA_COST'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_TRA_COST'),
             ],
             'N17_MEN_PAV' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MEN_PAV'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MEN_PAV'),
             ],
             'N17_MUIT_KOD' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MUIT_KOD'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MUIT_KOD'),
             ],
             'N17_SK_KODAS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_SK_KODAS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_SK_KODAS'),
             ],
             'N17_INTERNET' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_INTERNET'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_INTERNET'),
             ],
             'N17_DUM_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_DUM_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_DUM_POZ'),
             ],
             'N17_DUM_TIP' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_DUM_TIP'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_DUM_TIP'),
             ],
             'N17_DUM_D_IN' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_DUM_D_IN'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_DUM_D_IN'),
             ],
             'N17_DUM_D_OUT' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_DUM_D_OUT'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_DUM_D_OUT'),
             ],
             'N17_MUITO_PROC' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MUITO_PROC'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MUITO_PROC'),
             ],
             'N17_AKCIZO_PROC' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_AKCIZO_PROC'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_AKCIZO_PROC'),
             ],
             'N17_PASTABOS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_PASTABOS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_PASTABOS'),
             ],
             'N17_POZ_DATE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_POZ_DATE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_POZ_DATE'),
             ],
             'N17_BEG_DATE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_BEG_DATE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_BEG_DATE'),
             ],
             'N17_END_DATE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_END_DATE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_END_DATE'),
             ],
             'N17_USERIS' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_USERIS'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_USERIS'),
             ],
             'N17_R_DATE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_R_DATE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_R_DATE'),
             ],
             'N17_ADD_DATE' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_ADD_DATE'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_ADD_DATE'),
             ],
             'N17_ADDUSR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_ADDUSR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_ADDUSR'),
             ],
             'N17_MIN_VISO' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MIN_VISO'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MIN_VISO'),
             ],
             'N17_SERT_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_SERT_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_SERT_POZ'),
             ],
             'N17_KAT_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KAT_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KAT_POZ'),
             ],
             'N17_BROK_POZ' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_BROK_POZ'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_BROK_POZ'),
             ],
             'N17_KODAS_PS_G' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_PS_G'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_PS_G'),
             ],
             'N17_DATA_BR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_DATA_BR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_DATA_BR'),
             ],
             'N17_KODAS_VS_T' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_VS_T'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_VS_T'),
             ],
             'N17_KODAS_MS_A' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_MS_A'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_MS_A'),
             ],
             'N17_KODAS_MS_M' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_MS_M'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_MS_M'),
             ],
             'N17_AR_NAUJA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_AR_NAUJA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_AR_NAUJA'),
             ],
             'N17_DATA_NAUJA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_DATA_NAUJA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_DATA_NAUJA'),
             ],
             'N17_MIN_ANTK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MIN_ANTK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MIN_ANTK'),
             ],
             'N17_KODAS_LS_5' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_LS_5'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_LS_5'),
             ],
             'N17_KODAS_LS_6' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_LS_6'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_LS_6'),
             ],
             'N17_KODAS_LS_7' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_LS_7'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_LS_7'),
             ],
             'N17_KODAS_LS_8' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_KODAS_LS_8'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_KODAS_LS_8'),
             ],
             'N17_MIN_ANTK_UR' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MIN_ANTK_UR'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MIN_ANTK_UR'),
             ],
             'N17_MIN_ANTK_UR_D' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MIN_ANTK_UR_D'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MIN_ANTK_UR_D'),
             ],
             'N17_MAX_ANTK' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_MAX_ANTK'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_MAX_ANTK'),
             ],
             'N17_SVS_GALIOJA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_SVS_GALIOJA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_SVS_GALIOJA'),
             ],
             'N17_SVS_GALIOJA_D' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_SVS_GALIOJA_D'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_SVS_GALIOJA_D'),
             ],
             'N17_SVS_PARTIJA' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_SVS_PARTIJA'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_SVS_PARTIJA'),
             ],
             'N17_PAV_K1' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_PAV_K1'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_PAV_K1'),
             ],
             'N17_PAV_K2' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_PAV_K2'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_PAV_K2'),
             ],
             'N17_PAV_K3' => [
-                "type" => "text",
-                "label" => trans('Rivile::rivile_products.N17_PAV_K3'),
+                'type' => 'text',
+                'label' => trans('Rivile::rivile_products.N17_PAV_K3'),
             ],
 
         ];
@@ -734,7 +740,7 @@ class HCRivileProductsController extends HCBaseController
 
         $list = N17Prod::with($with)->select($select)
             // add filters
-            ->where(function($query) use ($select) {
+            ->where(function ($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -758,7 +764,7 @@ class HCRivileProductsController extends HCBaseController
      */
     protected function searchQuery(Builder $query, string $phrase): Builder
     {
-        return $query->where(function(Builder $query) use ($phrase) {
+        return $query->where(function (Builder $query) use ($phrase) {
             $query->where('COUNT', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('N17_KODAS_PS', 'LIKE', '%' . $phrase . '%')
                 ->orWhere('N17_TIPAS', 'LIKE', '%' . $phrase . '%')
