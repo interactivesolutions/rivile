@@ -55,7 +55,7 @@ class UpdateClients extends RivileCore
      */
     protected function init()
     {
-        $latItem = N08Klij::orderBy('N08_R_DATE', 'desc')->get()[1]->N08_R_DATE;
+        $latItem = N08Klij::orderBy('N08_R_DATE', 'desc')->first()->N08_R_DATE;
 
         $this->listType = 'A';
         $this->filters = "N08_R_DATE>'$latItem'";
