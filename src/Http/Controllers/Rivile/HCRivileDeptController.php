@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Http\Controllers\Rivile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
-use InteractiveSolutions\Rivile\Models\I44Skol;
+use InteractiveSolutions\Rivile\Models\Rivile\I44Skol;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileDeptValidator;
 
 /**

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
-use InteractiveSolutions\Rivile\Models\N17Prod;
+use InteractiveSolutions\Rivile\Models\Rivile\N17Prod;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileProductsValidator;
 
 /**

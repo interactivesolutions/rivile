@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace InteractiveSolutions\Rivile\Console\Commands;
 
 use InteractiveSolutions\HoneycombCore\Console\HCCommand;
-use InteractiveSolutions\Rivile\Models\N17Prod;
+use InteractiveSolutions\Rivile\Models\Rivile\N17Prod;
 
 /**
  * Class GetProducts

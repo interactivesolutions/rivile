@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use InteractiveSolutions\Rivile\Validators\Rivile\HCRivileClientsValidator;
-use InteractiveSolutions\Rivile\Models\N08Klij;
+use InteractiveSolutions\Rivile\Models\Rivile\N08Klij;
 
 /**
  * Class HCRivileClientsController

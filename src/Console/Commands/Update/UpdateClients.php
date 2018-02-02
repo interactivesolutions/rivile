@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Events\ClientsUpdateEvent;
-use InteractiveSolutions\Rivile\Models\N08Klij;
+use InteractiveSolutions\Rivile\Models\Rivile\N08Klij;
 use InteractiveSolutions\Rivile\Repositories\N08KlijRepository;
 use InteractiveSolutions\Rivile\Repositories\N33KbanRepository;
 

@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
 use InteractiveSolutions\Rivile\Events\ProductsUpdateEvent;
-use InteractiveSolutions\Rivile\Models\N17Prod;
+use InteractiveSolutions\Rivile\Models\Rivile\N17Prod;
 use InteractiveSolutions\Rivile\Repositories\I33PkaiRepository;
 use InteractiveSolutions\Rivile\Repositories\N17ProdRepository;
 use InteractiveSolutions\Rivile\Repositories\N37PmatRepository;

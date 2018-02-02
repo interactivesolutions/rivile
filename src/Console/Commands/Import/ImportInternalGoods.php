@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace InteractiveSolutions\Rivile\Console\Commands\Import;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
-use InteractiveSolutions\Rivile\Models\I17Vpro;
+use InteractiveSolutions\Rivile\Models\Rivile\I17Vpro;
 
 /**
  * Class ImportInternalGoods

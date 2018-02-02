@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace InteractiveSolutions\Rivile\Console\Commands\Update;
 
 use InteractiveSolutions\Rivile\Console\Commands\RivileCore;
-use InteractiveSolutions\Rivile\Models\I04Ath;
+use InteractiveSolutions\Rivile\Models\Rivile\I04Ath;
 
 /**
  * Class UpdatePayments
