@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\I04Ath;
+use InteractiveSolutions\Rivile\Models\Rivile\I04Ath;
 
 /**
  * Class I04AthRepository

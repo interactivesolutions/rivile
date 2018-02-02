@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N40Abar;
+use InteractiveSolutions\Rivile\Models\Rivile\N40Abar;
 
 /**
  * Class N40AbarRepository

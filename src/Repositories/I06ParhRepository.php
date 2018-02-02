@@ -4,9 +4,8 @@ declare(strict_types = 1);
 
 namespace InteractiveSolutions\Rivile\Repositories;
 
-
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\I06Parh;
+use InteractiveSolutions\Rivile\Models\Rivile\I06Parh;
 
 /**
  * Class I06ParhRepository
@@ -14,7 +13,6 @@ use InteractiveSolutions\Rivile\Models\I06Parh;
  */
 class I06ParhRepository extends Repository
 {
-
     /**
      * @return string
      */

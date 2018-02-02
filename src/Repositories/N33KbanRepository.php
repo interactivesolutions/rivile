@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N33Kban;
+use InteractiveSolutions\Rivile\Models\Rivile\N33Kban;
 
 /**
  * Class N33KbanRepository

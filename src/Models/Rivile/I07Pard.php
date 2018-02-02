@@ -2,14 +2,14 @@
 
 declare(strict_types = 1);
 
-namespace InteractiveSolutions\Rivile\Models;
+namespace InteractiveSolutions\Rivile\Models\Rivile;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
 /**
- * InteractiveSolutions\Rivile\Models\I07Pard
+ * InteractiveSolutions\Rivile\Models\Rivile\I07Pard
  *
  * @property int $count
  * @property string $id

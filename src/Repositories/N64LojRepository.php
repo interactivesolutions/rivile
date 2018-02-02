@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N64Loj;
+use InteractiveSolutions\Rivile\Models\Rivile\N64Loj;
 
 /**
  * Class N64LojRepository

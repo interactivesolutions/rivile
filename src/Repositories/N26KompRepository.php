@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N26Komp;
+use InteractiveSolutions\Rivile\Models\Rivile\N26Komp;
 
 /**
  * Class N26KompRepository

@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N31Nuod;
+use InteractiveSolutions\Rivile\Models\Rivile\N31Nuod;
 
 /**
  * Class N31NuodRepository

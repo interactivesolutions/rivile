@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace InteractiveSolutions\Rivile\Models;
+namespace InteractiveSolutions\Rivile\Models\Rivile;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
 /**
- * InteractiveSolutions\Rivile\Models\I17Vpro
+ * InteractiveSolutions\Rivile\Models\Rivile\I17Vpro
  *
  * @property int $count
  * @property string $id
@@ -75,7 +75,7 @@ use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
  * @method static Builder|I17Vpro whereLikutisUsA($value)
  * @method static Builder|I17Vpro whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \InteractiveSolutions\Rivile\Models\N17Prod|null $n17Prod
+ * @property-read \InteractiveSolutions\Rivile\Models\Rivile\N17Prod|null $n17Prod
  */
 class I17Vpro extends HCUuidModel
 {

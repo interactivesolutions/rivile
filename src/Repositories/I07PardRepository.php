@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\I07Pard;
+use InteractiveSolutions\Rivile\Models\Rivile\I07Pard;
 
 /**
  * Class I07PardRepository

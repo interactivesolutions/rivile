@@ -2,14 +2,14 @@
 
 declare(strict_types = 1);
 
-namespace InteractiveSolutions\Rivile\Models;
+namespace InteractiveSolutions\Rivile\Models\Rivile;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
 /**
- * InteractiveSolutions\Rivile\Models\N37Pmat
+ * InteractiveSolutions\Rivile\Models\Rivile\N37Pmat
  *
  * @property int $count
  * @property string $id

@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N32Pabc;
+use InteractiveSolutions\Rivile\Models\Rivile\N32Pabc;
 
 /**
  * Class N32PabcRepository

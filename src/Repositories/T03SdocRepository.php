@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\T03Sdok;
+use InteractiveSolutions\Rivile\Models\Rivile\T03Sdok;
 
 /**
  * Class T03SdocRepository

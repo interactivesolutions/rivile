@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N13Akc;
+use InteractiveSolutions\Rivile\Models\Rivile\N13Akc;
 
 /**
  * Class N13AkcRepository

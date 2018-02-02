@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N87Tpre;
+use InteractiveSolutions\Rivile\Models\Rivile\N87Tpre;
 
 /**
  * Class N87TpreRepository

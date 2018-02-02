@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 use Illuminate\Support\Collection;
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N17Prod;
+use InteractiveSolutions\Rivile\Models\Rivile\N17Prod;
 
 /**
  * Class N17ProdRepository

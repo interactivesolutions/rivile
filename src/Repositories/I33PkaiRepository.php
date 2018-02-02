@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\I33Pkai;
+use InteractiveSolutions\Rivile\Models\Rivile\I33Pkai;
 
 /**
  * Class I33PkaiRepository

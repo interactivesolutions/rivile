@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\I13Pamo;
+use InteractiveSolutions\Rivile\Models\Rivile\I13Pamo;
 
 /**
  * Class I13PamoRepository

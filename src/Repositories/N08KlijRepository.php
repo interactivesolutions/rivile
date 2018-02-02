@@ -8,7 +8,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 use Illuminate\Support\Collection;
 use InteractiveSolutions\HoneycombCore\Enum\BoolEnum;
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N08Klij;
+use InteractiveSolutions\Rivile\Models\Rivile\N08Klij;
 
 /**
  * Class N08KlijRepository

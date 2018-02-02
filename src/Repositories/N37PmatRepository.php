@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\N37Pmat;
+use InteractiveSolutions\Rivile\Models\Rivile\N37Pmat;
 
 /**
  * Class N37PmatRepository

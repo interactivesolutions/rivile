@@ -6,7 +6,7 @@ namespace InteractiveSolutions\Rivile\Repositories;
 
 
 use InteractiveSolutions\HoneycombCore\Repositories\Repository;
-use InteractiveSolutions\Rivile\Models\I44Skol;
+use InteractiveSolutions\Rivile\Models\Rivile\I44Skol;
 
 /**
  * Class I44SkolRepository
