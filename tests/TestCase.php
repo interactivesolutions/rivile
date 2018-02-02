@@ -31,6 +31,9 @@ namespace Tests;
 
 
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
+use InteractiveSolutions\HoneycombCore\Tests\BuildsMocks;
+use InteractiveSolutions\HoneycombCore\Tests\Traits\MemoryDatabaseMigrations;
 use InteractiveSolutions\Rivile\Providers\RivileServiceProvider;
 
 /**
@@ -39,12 +42,17 @@ use InteractiveSolutions\Rivile\Providers\RivileServiceProvider;
  */
 abstract class TestCase extends \Orchestra\Testbench\BrowserKit\TestCase
 {
+    use BuildsMocks;
     /**
      *
      */
     protected function setUp()
     {
         parent::setUp();
+
+        if (DB::connection()->getDatabaseName() == ':memory:') {
+            DB::statement('PRAGMA foreign_keys = ON;');
+        }
     }
 
     /**
@@ -58,8 +66,34 @@ abstract class TestCase extends \Orchestra\Testbench\BrowserKit\TestCase
         ];
     }
 
-    protected function getEnvironmentSetUp($app)
+    /**
+     * @param Application $app
+     * @throws \Illuminate\Container\EntryNotFoundException
+     */
+    protected function getEnvironmentSetUp($app): void
     {
         parent::getEnvironmentSetUp($app);
+
+        config([
+            'database.connections.sqlite_test' => [
+                'driver' => 'sqlite',
+                'database' => ':memory:',
+                'prefix' => '',
+            ],
+        ]);
+    }
+
+    /**
+     *
+     */
+    protected function setUpTraits()
+    {
+        parent::setUpTraits();
+
+        $uses = array_flip(class_uses_recursive(static::class));
+
+        if (isset($uses[MemoryDatabaseMigrations::class])) {
+            $this->runDatabaseMigrations();
+        }
     }
 }

@@ -113,7 +113,15 @@ class RivileServiceProvider extends HCBaseServiceProvider
     {
         parent::register();
 
+        $this->registerConfig();
         $this->registerRepositories();
+    }
+
+    private function registerConfig(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/rivile.php', 'rivile'
+        );
     }
 
     /**
