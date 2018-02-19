@@ -24,7 +24,7 @@ class GetProducts extends HCCommand
      *
      * @var string
      */
-    protected $description = 'GET_N08_LIST - import or update';
+    protected $description = 'GET_N17_LIST - import or update';
 
     /**
      * Initializing data

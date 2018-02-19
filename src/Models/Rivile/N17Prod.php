@@ -6,6 +6,7 @@ namespace InteractiveSolutions\Rivile\Models\Rivile;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
 /**
@@ -119,6 +120,7 @@ use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
  * @property string|null $N17_PAV_K1 Pavadinimas kita kalba 1
  * @property string|null $N17_PAV_K2 Pavadinimas kita kalba 2
  * @property string|null $N17_PAV_K3 Pavadinimas kita kalba 3
+ * @property-read \Illuminate\Database\Eloquent\Collection|I17Vpro[] $i17Vpro
  * @method static Builder|N17Prod whereCount($value)
  * @method static Builder|N17Prod whereCreatedAt($value)
  * @method static Builder|N17Prod whereDeletedAt($value)
@@ -345,4 +347,12 @@ class N17Prod extends HCUuidModel
         'N17_PAV_K2',
         'N17_PAV_K3',
     ];
+
+    /**
+     * @return HasMany
+     */
+    public function i17Vpro(): HasMany
+    {
+        return $this->hasMany(I17Vpro::class, 'I17_KODAS_PS', 'N17_KODAS_PS');
+    }
 }
