@@ -39,4 +39,16 @@ class I06ParhRepository extends Repository
             ->whereIn($whereField, $whereValues)
             ->get();
     }
+
+    /**
+     * @return null|string
+     * @throws \Illuminate\Container\EntryNotFoundException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function getLastDocumentNumber(): ? string
+    {
+        return $this->makeQuery()
+            ->where('I06_DOK_NR', 'LIKE', config('rivile.order_number_prefix'), '%')
+            ->orderByDesc('I06_DOK_NR')->limit(1)->value('I06_DOK_NR');
+    }
 }

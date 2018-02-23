@@ -52,6 +52,7 @@ use InteractiveSolutions\Rivile\Repositories\N40AbarRepository;
 use InteractiveSolutions\Rivile\Repositories\N64LojRepository;
 use InteractiveSolutions\Rivile\Repositories\N87TpreRepository;
 use InteractiveSolutions\Rivile\Repositories\T03SdocRepository;
+use InteractiveSolutions\Rivile\Services\I06ParhService;
 
 /**
  * Class RivileServiceProvider
@@ -115,13 +116,7 @@ class RivileServiceProvider extends HCBaseServiceProvider
 
         $this->registerConfig();
         $this->registerRepositories();
-    }
-
-    private function registerConfig(): void
-    {
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/rivile.php', 'rivile'
-        );
+        $this->registerServices();
     }
 
     /**
@@ -172,13 +167,11 @@ class RivileServiceProvider extends HCBaseServiceProvider
         $this->loadTranslationsFrom($this->homeDirectory . '/../resources/lang', $this->serviceProviderNameSpace);
     }
 
-    /**
-     * @param string $path
-     * @return string
-     */
-    private function modulePath(string $path): string
+    private function registerConfig(): void
     {
-        return __DIR__ . '/../' . $path;
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/rivile.php', 'rivile'
+        );
     }
 
     /**
@@ -210,5 +203,19 @@ class RivileServiceProvider extends HCBaseServiceProvider
         $this->app->singleton(N64LojRepository::class);
         $this->app->singleton(N87TpreRepository::class);
         $this->app->singleton(T03SdocRepository::class);
+    }
+
+    private function registerServices(): void
+    {
+        $this->app->singleton(I06ParhService::class);
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    private function modulePath(string $path): string
+    {
+        return __DIR__ . '/../' . $path;
     }
 }
