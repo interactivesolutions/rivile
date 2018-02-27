@@ -33,18 +33,21 @@ class I06ParhService
      */
     public function getNextOrderNumber(): string
     {
+        $orderNumberPrefix = config('rivile.order_number_prefix');
         $lastNumber = $this->i06ParhRepository->getLastDocumentNumber();
 
         if ($lastNumber) {
-            $lastNumber = substr($lastNumber, strlen(config('rivile.order_number_prefix')));
+            $lastNumber = (int)substr($lastNumber, strlen($orderNumberPrefix));
         }
+
+        $lastNumber = (int)$lastNumber + 1;
 
         return sprintf(
             '%s%s',
-            config('rivile.order_number_prefix'),
+            $orderNumberPrefix,
             str_pad(
                 (string)(int)$lastNumber,
-                12 - strlen(config('rivile.order_number_prefix')),
+                12 - strlen($orderNumberPrefix),
                 '0',
                 STR_PAD_LEFT
             )
