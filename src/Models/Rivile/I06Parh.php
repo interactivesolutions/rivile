@@ -6,6 +6,7 @@ namespace InteractiveSolutions\Rivile\Models\Rivile;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
 /**
@@ -67,6 +68,7 @@ use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
  * @property string|null $I06_APRASYMAS1 Aprašymo laukas 1
  * @property string|null $I06_APRASYMAS2 Aprašymo laukas 2
  * @property string|null $I06_APRASYMAS3 Aprašymo laukas 3
+ * @property-read \Illuminate\Database\Eloquent\Collection|I44Skol[] $i44Skol
  * @method static Builder|I06Parh whereCount($value)
  * @method static Builder|I06Parh whereCreatedAt($value)
  * @method static Builder|I06Parh whereDeletedAt($value)
@@ -193,4 +195,8 @@ class I06Parh extends HCUuidModel
         'I06_APRASYMAS3',
     ];
 
+    public function i44Skol(): HasMany
+    {
+        return $this->hasMany(I44Skol::class, 'I44_KODAS_OP', 'I06_KODAS_PO');
+    }
 }

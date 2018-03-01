@@ -6,6 +6,7 @@ namespace InteractiveSolutions\Rivile\Models\Rivile;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
 /**
@@ -28,6 +29,7 @@ use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
  * @property string|null $I08_ADDUSR Kas sukūrė
  * @property float|null $I08_MOK_S Mokėjimo suma
  * @property float|null $I08_PLK_P Palūkanų procentas
+ * @property-read I06Parh $i06Parh
  * @method static Builder|I08Part whereCount($value)
  * @method static Builder|I08Part whereCreatedAt($value)
  * @method static Builder|I08Part whereDeletedAt($value)
@@ -72,5 +74,13 @@ class I08Part extends HCUuidModel
         'I08_MOK_S',
         'I08_PLK_P',
     ];
+
+    /**
+     * @return HasOne
+     */
+    public function i06Parh(): HasOne
+    {
+        return $this->hasOne(I06Parh::class, 'I06_KODAS_PO', 'I08_KODAS_PO');
+    }
 
 }
