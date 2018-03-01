@@ -74,7 +74,7 @@ class UpdateI06List extends RivileCore
      */
     protected function init()
     {
-        $lastItem = I06Parh::orderBy('I06_R_DATE', 'desc')->get()[1]->I06_R_DATE;
+        $lastItem = I06Parh::orderBy('I06_R_DATE', 'desc')->get()[0]->I06_R_DATE;
 
         $this->listType = 'A';
         $this->filters = "I06_R_DATE>'$lastItem'";
