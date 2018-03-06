@@ -41,14 +41,15 @@ class I06ParhRepository extends Repository
     }
 
     /**
+     * @param string $field
      * @return null|string
      * @throws \Illuminate\Container\EntryNotFoundException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function getLastDocumentNumber(): ? string
+    public function getLastFieldNumber(string $field = 'I06_DOK_NR'): ? string
     {
         return $this->makeQuery()
-            ->where('I06_DOK_NR', 'LIKE', config('rivile.order_number_prefix'), '%')
-            ->orderByDesc('I06_DOK_NR')->limit(1)->value('I06_DOK_NR');
+            ->where($field, 'LIKE', config('rivile.order_number_prefix'). '%')
+            ->orderByDesc($field)->limit(1)->value($field);
     }
 }

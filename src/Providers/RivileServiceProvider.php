@@ -7,6 +7,7 @@ namespace InteractiveSolutions\Rivile\Providers;
 use Illuminate\Routing\Router;
 use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 use InteractiveSolutions\Rivile\Console\Commands\Export\ExportClient;
+use InteractiveSolutions\Rivile\Console\Commands\Export\ExportI06Parh;
 use InteractiveSolutions\Rivile\Console\Commands\Export\ExportN37Pmat;
 use InteractiveSolutions\Rivile\Console\Commands\Export\ExportProduct;
 use InteractiveSolutions\Rivile\Console\Commands\GetClients;
@@ -98,6 +99,7 @@ class RivileServiceProvider extends HCBaseServiceProvider
         UpdateProducts::class,
 
         ExportClient::class,
+        ExportI06Parh::class,
         ExportProduct::class,
         ExportN37Pmat::class,
     ];
