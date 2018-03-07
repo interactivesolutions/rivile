@@ -158,7 +158,6 @@ class UpdateProducts extends RivileCore
             $this->n37PmatRepository->updateOrCreate([
                 'N37_KODAS_PS' => $item['N37_KODAS_PS'],
                 'N37_KODAS_US' => $item['N37_KODAS_US'],
-                'N37_BAR_KODAS' => $item['N37_BAR_KODAS'],
             ], $item);
         }
     }
