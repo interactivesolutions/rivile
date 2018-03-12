@@ -74,7 +74,10 @@ class ExportI06Parh extends RivileCore
 
         /** @var I06Parh $client */
         $client = $this->parhRepository->updateOrCreate(
-            ['I06_DOK_NR' => $response['I06_DOK_NR']],
+            [
+                'id' => $this->argument('id'),
+                'I06_DOK_NR' => $response['I06_DOK_NR'],
+            ],
             $response
         );
     }
