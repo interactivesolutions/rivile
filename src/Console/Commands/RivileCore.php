@@ -253,7 +253,7 @@ class RivileCore extends Command
             throw new \Exception($message);
         }
 
-        $array = $this->clearArrayFromEmptyArrays($array[$this->xmlRootName]);
+        $array = $this->clearArrayFromEmptyArrays(array_get($array, $this->xmlRootName, []));
 
         return $array;
     }
