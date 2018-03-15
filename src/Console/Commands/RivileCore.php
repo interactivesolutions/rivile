@@ -79,6 +79,12 @@ class RivileCore extends Command
      */
     protected $filters;
     /**
+     * PDF invoice type
+     *
+     * @var
+     */
+    protected $mod;
+    /**
      * Data for update / create / delete
      *
      * @var
@@ -111,35 +117,43 @@ class RivileCore extends Command
     }
 
     /**
+     * Function returns XML string for input associative array.
+     * @param array $array Input associative array
+     * @param string $wrap Wrapping tag
+     * @param bool $upper To set tags in uppercase
+     * @return string
+     */
+    function array2xml(array $array, string $wrap = 'ROW0', bool $upper = true)
+    {
+        // set initial value for XML string
+        $xml = '';
+        // wrap XML with $wrap TAG
+        if ($wrap != null) {
+            $xml .= "<$wrap>\n";
+        }
+        // main loop
+        foreach ($array as $key => $value) {
+            // set tags in uppercase if needed
+            if ($upper == true) {
+                $key = strtoupper($key);
+            }
+            // append to XML string
+            $xml .= "<$key>" . htmlspecialchars(trim((string)$value)) . "</$key>";
+        }
+        // close wrap TAG if needed
+        if ($wrap != null) {
+            $xml .= "\n</$wrap>\n";
+        }
+
+        // return prepared XML string
+        return $xml;
+    }
+
+    /**
      * Initializing action data
      */
     protected function init()
     {
-    }
-
-    /**
-     * Validating configurations
-     *
-     * @throws \Exception
-     */
-    private function validate()
-    {
-        $this->url = config('rivile.url');
-        $this->key = config('rivile.key');
-
-        // todo: check is set $this->xmlRootName
-
-        if ($this->key == '') {
-            throw new \Exception('ISR-0001 : ' . trans('Rivile::errors.key_not_found'));
-        }
-
-        if (!$this->action) {
-            throw new \Exception('ISR-0002 : ' . trans('Rivile::errors.no_action_specified'));
-        }
-
-        if (!$this->actionMethod) {
-            throw new \Exception('ISR-0003 : ' . trans('Rivile::errors.no_action_method_specified'));
-        }
     }
 
     /**
@@ -152,6 +166,13 @@ class RivileCore extends Command
         switch ($this->actionMethod) {
             case self::ACTION_METHOD_GET:
                 switch ($this->getAction()) {
+                    case 'PDF_INVOICE':
+                        $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}(
+                            $this->key,
+                            $this->filters,
+                            $this->mod
+                        )));
+                        break;
                     case 'GET_I17_LIST':
                         $this->_handleResponse($this->xmlToArray($soapClient->{$this->getAction()}(
                             $this->key,
@@ -225,6 +246,45 @@ class RivileCore extends Command
     }
 
     /**
+     * @param array $list
+     */
+    protected function clearEmptySpaces(array &$list)
+    {
+        foreach ($list as &$string) {
+            if (is_array($string)) {
+                $this->clearEmptySpaces($string);
+            } elseif (!is_null($string)) {
+                $string = trim($string);
+            }
+        }
+    }
+
+    /**
+     * Validating configurations
+     *
+     * @throws \Exception
+     */
+    private function validate()
+    {
+        $this->url = config('rivile.url');
+        $this->key = config('rivile.key');
+
+        // todo: check is set $this->xmlRootName
+
+        if ($this->key == '') {
+            throw new \Exception('ISR-0001 : ' . trans('Rivile::errors.key_not_found'));
+        }
+
+        if (!$this->action) {
+            throw new \Exception('ISR-0002 : ' . trans('Rivile::errors.no_action_specified'));
+        }
+
+        if (!$this->actionMethod) {
+            throw new \Exception('ISR-0003 : ' . trans('Rivile::errors.no_action_method_specified'));
+        }
+    }
+
+    /**
      * @param $response
      * @return array|mixed
      * @throws \Exception
@@ -253,7 +313,14 @@ class RivileCore extends Command
             throw new \Exception($message);
         }
 
-        $array = $this->clearArrayFromEmptyArrays(array_get($array, $this->xmlRootName, []));
+        switch ($this->getAction()) {
+            case 'PDF_INVOICE':
+                $array = $this->clearArrayFromEmptyArrays($array);
+                break;
+            default:
+                $array = $this->clearArrayFromEmptyArrays(array_get($array, $this->xmlRootName, []));
+                break;
+        }
 
         return $array;
     }
@@ -284,59 +351,16 @@ class RivileCore extends Command
     {
         switch ($this->actionMethod) {
             case self::ACTION_METHOD_GET:
+                if ($this->action == 'PDF_INVOICE') {
+                    return 'PDF_INVOICE';
+                }
+
                 return 'GET_' . $this->action . '_LIST';
 
             case self::ACTION_METHOD_UPDATE:
             case self::ACTION_METHOD_NEW:
             case self::ACTION_METHOD_DELETE:
                 return 'EDIT_' . $this->action;
-        }
-    }
-
-    /**
-     * Function returns XML string for input associative array.
-     * @param array $array Input associative array
-     * @param string $wrap Wrapping tag
-     * @param bool $upper To set tags in uppercase
-     * @return string
-     */
-    function array2xml(array $array, string $wrap = 'ROW0', bool $upper = true)
-    {
-        // set initial value for XML string
-        $xml = '';
-        // wrap XML with $wrap TAG
-        if ($wrap != null) {
-            $xml .= "<$wrap>\n";
-        }
-        // main loop
-        foreach ($array as $key => $value) {
-            // set tags in uppercase if needed
-            if ($upper == true) {
-                $key = strtoupper($key);
-            }
-            // append to XML string
-            $xml .= "<$key>" . htmlspecialchars(trim((string)$value)) . "</$key>";
-        }
-        // close wrap TAG if needed
-        if ($wrap != null) {
-            $xml .= "\n</$wrap>\n";
-        }
-
-        // return prepared XML string
-        return $xml;
-    }
-
-    /**
-     * @param array $list
-     */
-    protected function clearEmptySpaces(array &$list)
-    {
-        foreach ($list as &$string) {
-            if (is_array($string)) {
-                $this->clearEmptySpaces($string);
-            } elseif (!is_null($string)) {
-                $string = trim($string);
-            }
         }
     }
 }

@@ -17,6 +17,7 @@ use InteractiveSolutions\Rivile\Console\Commands\GetDept;
 use InteractiveSolutions\Rivile\Console\Commands\GetI06List;
 use InteractiveSolutions\Rivile\Console\Commands\GetInternalGoods;
 use InteractiveSolutions\Rivile\Console\Commands\GetPayments;
+use InteractiveSolutions\Rivile\Console\Commands\GetPdfInvoice;
 use InteractiveSolutions\Rivile\Console\Commands\GetProducts;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportClients;
 use InteractiveSolutions\Rivile\Console\Commands\Import\ImportDept;
@@ -85,6 +86,7 @@ class RivileServiceProvider extends HCBaseServiceProvider
         GetInternalGoods::class,
         GetPayments::class,
         GetProducts::class,
+        GetPdfInvoice::class,
 
         ImportClients::class,
         ImportDept::class,
