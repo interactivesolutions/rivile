@@ -62,6 +62,9 @@ class ExportN37Pmat extends RivileCore
                 break;
         }
 
-        $this->data = $this->n37PmatRepository->find($this->argument('id'))->toArray();
+        $data = $this->n37PmatRepository->find($this->argument('id'))->toArray();
+        array_forget($data, 'N37_BAR_KODAS');
+
+        $this->data = $data;
     }
 }
